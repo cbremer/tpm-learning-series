@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Fundamentals for TPMs</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Prevent flash of unstyled content when dark mode is preferred -->
+  <script>
+    (function () {
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      try {
+        var saved = localStorage.getItem('ai-basics-theme');
+        if (saved === 'dark' || (!saved && prefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {
+        if (prefersDark) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Dark / light mode toggle -->
+  <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle dark mode">🌙</button>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-content">
+      <div class="hero-icon">🤖</div>
+      <h1>AI Fundamentals for TPMs</h1>
+      <p class="hero-subtitle">A clear, jargon-free guide to machine learning, deep learning, and large language models — no engineering degree required!</p>
+      <div class="progress-bar-container" aria-label="Course progress">
+        <div
+          class="progress-bar"
+          id="progressBar"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+          aria-labelledby="progressLabel"></div>
+      </div>
+      <span class="progress-label" id="progressLabel"></span>
+    </div>
+  </header>
+
+  <!-- Nav tabs -->
+  <nav class="topic-nav" role="tablist" aria-label="Topics">
+    <button class="tab-btn active" id="tab-intro"           role="tab" aria-selected="true"  aria-controls="intro"           data-tab="intro"           onclick="showTab('intro')">🗺️ Overview</button>
+    <button class="tab-btn"        id="tab-machine-learning" role="tab" aria-selected="false" aria-controls="machine-learning" data-tab="machine-learning" onclick="showTab('machine-learning')">📊 Machine Learning</button>
+    <button class="tab-btn"        id="tab-deep-learning"    role="tab" aria-selected="false" aria-controls="deep-learning"    data-tab="deep-learning"    onclick="showTab('deep-learning')">🧠 Deep Learning</button>
+    <button class="tab-btn"        id="tab-llm"              role="tab" aria-selected="false" aria-controls="llm"              data-tab="llm"              onclick="showTab('llm')">💬 Large Language Models</button>
+    <button class="tab-btn"        id="tab-ai-products"      role="tab" aria-selected="false" aria-controls="ai-products"      data-tab="ai-products"      onclick="showTab('ai-products')">🛒 AI Products vs. Models</button>
+  </nav>
+
+  <main class="content-area">
+
+    <!-- ── Tab 1: Overview ── -->
+    <section id="intro" class="tab-panel active" role="tabpanel" aria-labelledby="tab-intro">
+      <div class="card">
+        <h2>🗺️ The AI Landscape — A Quick Map</h2>
+        <p>
+          Artificial intelligence is everywhere — but the terminology can be confusing. Is <em>machine learning</em>
+          the same as <em>AI</em>? What's the difference between a <em>model</em> and a <em>product</em>?
+          This guide gives you a clear mental model to understand how it all fits together.
+        </p>
+
+        <div class="analogy-box">
+          <span class="analogy-icon">💡</span>
+          <div>
+            <strong>TPM analogy:</strong> Think of AI like a Russian nesting doll. AI is the outer shell — the big umbrella.
+            Inside it is Machine Learning. Inside ML is Deep Learning. And inside Deep Learning are Large Language Models
+            (like ChatGPT). Each layer is more specific than the one surrounding it.
+          </div>
+        </div>
+
+        <h3>The AI Hierarchy — Click each level to learn more</h3>
+        <div class="ai-hierarchy">
+          <div class="hierarchy-level level-1" onclick="showHierarchyDetail('ai')">
+            <div class="hierarchy-label">🤖 Artificial Intelligence (AI)</div>
+            <div class="hierarchy-sub">Broadest field — any machine that mimics human intelligence</div>
+          </div>
+          <div class="hierarchy-level level-2" onclick="showHierarchyDetail('ml')">
+            <div class="hierarchy-label">📊 Machine Learning (ML)</div>
+            <div class="hierarchy-sub">Systems that learn from data — no explicit rules needed</div>
+          </div>
+          <div class="hierarchy-level level-3" onclick="showHierarchyDetail('dl')">
+            <div class="hierarchy-label">🧠 Deep Learning (DL)</div>
+            <div class="hierarchy-sub">ML using multi-layer neural networks — powers most modern AI</div>
+          </div>
+          <div class="hierarchy-level level-4" onclick="showHierarchyDetail('llm')">
+            <div class="hierarchy-label">💬 Large Language Models (LLMs)</div>
+            <div class="hierarchy-sub">Deep learning trained on text — GPT-4, Claude, Gemini</div>
+          </div>
+        </div>
+        <div class="hierarchy-detail" id="hierarchyDetailBox">
+          <em>👆 Click a level above to learn about it</em>
+        </div>
+
+        <h3>Two things people often confuse: Products vs. Models</h3>
+        <div class="comparison-grid">
+          <div class="compare-card product">
+            <div class="compare-icon">📱</div>
+            <h4>AI Products (Apps)</h4>
+            <p>The <strong>interface</strong> you interact with. Examples: <strong>ChatGPT</strong> (chat app), <strong>Codex</strong> (coding agent), <strong>Claude.ai</strong> (chat app), <strong>Claude Code</strong> (coding agent).</p>
+          </div>
+          <div class="compare-card model">
+            <div class="compare-icon">⚙️</div>
+            <h4>AI Models (Engines)</h4>
+            <p>The underlying <strong>AI engine</strong> doing the work. Examples: <strong>GPT-4o</strong>, <strong>Codex-mini</strong>, <strong>Claude Sonnet</strong>, <strong>Claude Opus</strong>. Accessible via APIs.</p>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <span class="info-icon">🔑</span>
+          <div>
+            <strong>Key insight:</strong> ChatGPT is to GPT-4 as a car is to its engine.
+            You drive the car (use the product), but the engine (model) is what actually makes it go.
+            Developers can access the engine directly via APIs to build their own products.
+          </div>
+        </div>
+
+        <div class="key-points">
+          <h3>Key Takeaways</h3>
+          <ul>
+            <li>✅ AI → ML → Deep Learning → LLMs: each is a subset of the previous</li>
+            <li>✅ Products (ChatGPT, Claude Code) are applications built on top of models</li>
+            <li>✅ Models (GPT-4, Claude Sonnet) are the AI engines accessible via APIs</li>
+            <li>✅ The same model can power multiple products (e.g., Claude Sonnet powers Claude Code)</li>
+          </ul>
+        </div>
+        <button class="mark-done-btn" data-topic="intro" onclick="markDone('intro', this)">Mark as Done ✓</button>
+      </div>
+    </section>
+
+    <!-- ── Tab 2: Machine Learning ── -->
+    <section id="machine-learning" class="tab-panel" role="tabpanel" aria-labelledby="tab-machine-learning">
+      <div class="card">
+        <h2>📊 What is Machine Learning?</h2>
+        <p>
+          <strong>Machine Learning (ML)</strong> is a way of building software where, instead of
+          writing rules by hand, you give the system <em>examples</em> and let it figure out the patterns.
+        </p>
+
+        <div class="analogy-box">
+          <span class="analogy-icon">💡</span>
+          <div>
+            <strong>TPM analogy:</strong> Imagine you want to build a spam filter. The <em>traditional</em> approach:
+            write rules like "if email contains 'free money', it's spam." The <em>ML approach</em>:
+            show the system 100,000 labeled emails (spam / not spam) and let it learn the patterns itself.
+            The ML model will discover patterns you never thought to write.
+          </div>
+        </div>
+
+        <h3>Three types of Machine Learning</h3>
+        <div class="three-col-grid">
+          <div class="compare-card ml">
+            <div class="compare-icon">🏷️</div>
+            <h4>Supervised Learning</h4>
+            <p>Train on <strong>labeled examples</strong>. The model learns to predict outputs from inputs. (Email spam detection, image classification, price prediction)</p>
+          </div>
+          <div class="compare-card ai">
+            <div class="compare-icon">🔍</div>
+            <h4>Unsupervised Learning</h4>
+            <p>Find <strong>hidden patterns</strong> in unlabeled data. The model groups similar things together. (Customer segmentation, anomaly detection)</p>
+          </div>
+          <div class="compare-card dl">
+            <div class="compare-icon">🎮</div>
+            <h4>Reinforcement Learning</h4>
+            <p>Learn by <strong>trial and error</strong> with rewards and penalties. (Game-playing AI, robotics, recommendation systems)</p>
+          </div>
+        </div>
+
+        <h3>The ML Pipeline — Click each step to learn more</h3>
+        <div class="process-flow">
+          <div class="process-step" id="ml-1" onclick="explainMLStep(1)">
+            <span class="ps-icon">📊</span>
+            <span class="ps-label">1. Collect<br/>Data</span>
+          </div>
+          <span class="ps-arrow">→</span>
+          <div class="process-step" id="ml-2" onclick="explainMLStep(2)">
+            <span class="ps-icon">🧹</span>
+            <span class="ps-label">2. Clean &amp;<br/>Prepare</span>
+          </div>
+          <span class="ps-arrow">→</span>
+          <div class="process-step" id="ml-3" onclick="explainMLStep(3)">
+            <span class="ps-icon">🏗️</span>
+            <span class="ps-label">3. Choose<br/>Model</span>
+          </div>
+          <span class="ps-arrow">→</span>
+          <div class="process-step" id="ml-4" onclick="explainMLStep(4)">
+            <span class="ps-icon">🎓</span>
+            <span class="ps-label">4. Train</span>
+          </div>
+          <span class="ps-arrow">→</span>
+          <div class="process-step" id="ml-5" onclick="explainMLStep(5)">
+            <span class="ps-icon">🧪</span>
+            <span class="ps-label">5. Evaluate</span>
+          </div>
+          <span class="ps-arrow">→</span>
+          <div class="process-step" id="ml-6" onclick="explainMLStep(6)">
+            <span class="ps-icon">🚀</span>
+            <span class="ps-label">6. Deploy</span>
+          </div>
+        </div>
+        <div class="process-detail" id="mlProcessDetail">
+          <em>👆 Click a step above to learn about it</em>
+        </div>
+
+        <h3>ML in the real world — examples you know</h3>
+        <div class="glossary-grid">
+          <div class="glossary-item">
+            <div class="glossary-term">🎬 Netflix recommendations</div>
+            <div class="glossary-def">Supervised + collaborative filtering ML predicts what you'll want to watch next based on your history and similar users.</div>
+          </div>
+          <div class="glossary-item">
+            <div class="glossary-term">📧 Spam filters</div>
+            <div class="glossary-def">Trained on millions of spam/not-spam examples. Updates continuously as spammers evolve their tactics.</div>
+          </div>
+          <div class="glossary-item">
+            <div class="glossary-term">🏦 Fraud detection</div>
+            <div class="glossary-def">ML models flag unusual transactions in real time by learning patterns from historical fraud cases.</div>
+          </div>
+          <div class="glossary-item">
+            <div class="glossary-term">🔍 Search ranking</div>
+            <div class="glossary-def">Google's ranking is heavily ML-driven — learning from billions of queries what results people actually find useful.</div>
+          </div>
+        </div>
+
+        <div class="key-points">
+          <h3>Key Takeaways</h3>
+          <ul>
+            <li>✅ ML learns from data examples instead of hand-coded rules</li>
+            <li>✅ Three types: Supervised (labeled), Unsupervised (unlabeled), Reinforcement (trial &amp; error)</li>
+            <li>✅ Data quality is the #1 factor in ML success</li>
+            <li>✅ ML models need monitoring after deployment — data can drift over time</li>
+          </ul>
+        </div>
+        <button class="mark-done-btn" data-topic="machine-learning" onclick="markDone('machine-learning', this)">Mark as Done ✓</button>
+      </div>
+    </section>
+
+    <!-- ── Tab 3: Deep Learning ── -->
+    <section id="deep-learning" class="tab-panel" role="tabpanel" aria-labelledby="tab-deep-learning">
+      <div class="card">
+        <h2>🧠 What is Deep Learning?</h2>
+        <p>
+          <strong>Deep Learning</strong> is a type of machine learning that uses <em>artificial neural networks</em>
+          — systems loosely inspired by the human brain. The "deep" refers to the <em>many layers</em>
+          in these networks.
+        </p>
+
+        <div class="analogy-box">
+          <span class="analogy-icon">💡</span>
+          <div>
+            <strong>TPM analogy:</strong> Imagine a photo recognition system. A traditional ML model might need
+            you to manually extract features like "has four legs" or "has fur." A deep learning model learns
+            to extract <em>its own features</em> automatically — starting with edges and shapes in early layers,
+            then assembling those into ears and eyes, then into "cat." No manual feature engineering required.
+          </div>
+        </div>
+
+        <h3>How a Neural Network works</h3>
+        <p>Data flows from left to right through layers of connected "neurons." Each layer transforms the data, learning increasingly abstract representations.</p>
+
+        <div class="nn-visual">
+          <div class="nn-layers">
+            <div class="nn-layer">
+              <div class="nn-layer-label">Input Layer</div>
+              <div class="nn-node input" title="Input neuron">I</div>
+              <div class="nn-node input" title="Input neuron">I</div>
+              <div class="nn-node input" title="Input neuron">I</div>
+            </div>
+            <span class="nn-arrow">→</span>
+            <div class="nn-layer">
+              <div class="nn-layer-label">Hidden Layer 1</div>
+              <div class="nn-node hidden" title="Hidden neuron">H</div>
+              <div class="nn-node hidden" title="Hidden neuron">H</div>
+              <div class="nn-node hidden" title="Hidden neuron">H</div>
+              <div class="nn-node hidden" title="Hidden neuron">H</div>
+            </div>
+            <span class="nn-arrow">→</span>
+            <div class="nn-layer">
+              <div class="nn-layer-label">Hidden Layer 2</div>
+              <div class="nn-node hidden" title="Hidden neuron">H</div>
+              <div class="nn-node hidden" title="Hidden neuron">H</div>
+              <div class="nn-node hidden" title="Hidden neuron">H</div>
+              <div class="nn-node hidden" title="Hidden neuron">H</div>
+            </div>
+            <span class="nn-arrow">→</span>
+            <div class="nn-layer">
+              <div class="nn-layer-label">Output Layer</div>
+              <div class="nn-node output" title="Output neuron">O</div>
+              <div class="nn-node output" title="Output neuron">O</div>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:.88rem;color:var(--muted);text-align:center;margin-top:-.5rem">
+          Hover over nodes to interact. More hidden layers = "deeper" network.
+        </p>
+
+        <h3>Why Deep Learning is a breakthrough</h3>
+        <div class="comparison-grid">
+          <div class="compare-card ml">
+            <div class="compare-icon">🔧</div>
+            <h4>Traditional ML</h4>
+            <p>You must manually define which features to extract from data. Requires significant domain expertise.</p>
+          </div>
+          <div class="compare-card dl">
+            <div class="compare-icon">🧠</div>
+            <h4>Deep Learning</h4>
+            <p>Learns to extract relevant features <strong>automatically</strong>. Scales dramatically better with more data.</p>
+          </div>
+        </div>
+
+        <h3>Key Deep Learning architectures (you'll hear these terms)</h3>
+        <div class="glossary-grid">
+          <div class="glossary-item">
+            <div class="glossary-term">🔄 CNN (Convolutional Neural Network)</div>
+            <div class="glossary-def">Specialized for images. Learns spatial patterns. Powers face recognition, medical imaging, self-driving vision.</div>
+          </div>
+          <div class="glossary-item">
+            <div class="glossary-term">📝 RNN / LSTM</div>
+            <div class="glossary-def">Designed for sequences (text, time series). Early approach to language tasks — mostly replaced by Transformers.</div>
+          </div>
+          <div class="glossary-item">
+            <div class="glossary-term">🔀 Transformer</div>
+            <div class="glossary-def">The architecture behind all modern LLMs. Uses "attention" to understand context across long sequences. Introduced in 2017 ("Attention Is All You Need").</div>
+          </div>
+          <div class="glossary-item">
+            <div class="glossary-term">🎨 Diffusion Model</div>
+            <div class="glossary-def">Powers image generation (DALL-E, Stable Diffusion, Midjourney). Learns to progressively "denoise" random noise into images.</div>
+          </div>
+        </div>
+
+        <div class="key-points">
+          <h3>Key Takeaways</h3>
+          <ul>
+            <li>✅ Deep learning = ML with many-layer neural networks</li>
+            <li>✅ "Deep" = many layers, not depth of understanding</li>
+            <li>✅ Learns features automatically — no manual feature engineering</li>
+            <li>✅ The Transformer architecture (2017) is what powers all modern LLMs</li>
+            <li>✅ Needs lots of data and compute — but scales extremely well</li>
+          </ul>
+        </div>
+        <button class="mark-done-btn" data-topic="deep-learning" onclick="markDone('deep-learning', this)">Mark as Done ✓</button>
+      </div>
+    </section>
+
+    <!-- ── Tab 4: LLMs ── -->
+    <section id="llm" class="tab-panel" role="tabpanel" aria-labelledby="tab-llm">
+      <div class="card">
+        <h2>💬 Large Language Models (LLMs)</h2>
+        <p>
+          A <strong>Large Language Model (LLM)</strong> is a deep learning model trained on enormous
+          amounts of text. It learns to understand and generate language by predicting the next word
+          (or "token") in a sequence — over and over, at massive scale.
+        </p>
+
+        <div class="analogy-box">
+          <span class="analogy-icon">💡</span>
+          <div>
+            <strong>TPM analogy:</strong> Imagine reading every book, article, website, and code repository
+            ever written — billions of pages. After reading all of that, you develop an incredibly rich
+            intuition for language patterns, facts, reasoning, and writing styles. That's what an LLM has done,
+            except it "read" everything in a compressed mathematical form.
+          </div>
+        </div>
+
+        <h3>What are "tokens"?</h3>
+        <p>LLMs don't process whole words — they work with <strong>tokens</strong>, which are roughly word-pieces. Here's how the sentence "The bank by the river was flooded" gets split:</p>
+
+        <div class="token-demo">
+          <span class="token t1">The</span>
+          <span class="token t2">bank</span>
+          <span class="token t3">by</span>
+          <span class="token t4">the</span>
+          <span class="token t5">river</span>
+          <span class="token t6">was</span>
+          <span class="token t1">flooded</span>
+        </div>
+        <p style="font-size:.88rem;color:var(--muted)">Each colored block = one token. Tokens are the currency of LLMs — model costs are priced per token (input + output).</p>
+
+        <h3>How "Attention" works — the magic of Transformers</h3>
+        <p>When an LLM processes a word, it doesn't just look at that word — it "attends" to all other words to understand context. Click a word below to see what it attends to:</p>
+
+        <div class="attention-demo">
+          <div class="attention-row">
+            <span class="attention-word highlight-low" data-word="The" onclick="showAttention('The')">The</span>
+            <span class="attention-word highlight-low" data-word="bank" onclick="showAttention('bank')">bank</span>
+            <span class="attention-word highlight-low" data-word="by" onclick="showAttention('by')">by</span>
+            <span class="attention-word highlight-low" data-word="the" onclick="showAttention('the')">the</span>
+            <span class="attention-word highlight-low" data-word="river" onclick="showAttention('river')">river</span>
+            <span class="attention-word highlight-low" data-word="was" onclick="showAttention('was')">was</span>
+            <span class="attention-word highlight-low" data-word="flooded" onclick="showAttention('flooded')">flooded</span>
+          </div>
+          <div class="attention-explanation" id="attentionExplanation">
+            👆 Click a word to see which other words the model attends to when understanding it
+          </div>
+        </div>
+
+        <h3>What LLMs can (and cannot) do</h3>
+        <div class="comparison-grid">
+          <div class="compare-card ai">
+            <div class="compare-icon">✅</div>
+            <h4>LLMs are great at</h4>
+            <p style="text-align:left">Writing &amp; editing · Summarization · Q&amp;A · Code generation · Translation · Brainstorming · Following instructions · Conversation</p>
+          </div>
+          <div class="compare-card model" style="border-color:#ef4444;background:#fee2e222;">
+            <div class="compare-icon">⚠️</div>
+            <h4>LLMs struggle with</h4>
+            <p style="text-align:left">Precise math · Reliable factual recall (can "hallucinate") · Real-time information · Counting · Multi-step logical chains</p>
+          </div>
+        </div>
+
+        <h3>Key LLM concepts you'll hear</h3>
+        <div class="glossary-grid">
+          <div class="glossary-item">
+            <div class="glossary-term">📐 Parameters / Weights</div>
+            <div class="glossary-def">The learned numbers inside the model. GPT-4 has hundreds of billions of parameters. More parameters ≠ always better, but generally more capable.</div>
+          </div>
+          <div class="glossary-item">
+            <div class="glossary-term">🎯 Prompt Engineering</div>
+            <div class="glossary-def">The art of crafting inputs to get the best outputs from an LLM. Clear, specific prompts with context produce dramatically better results.</div>
+          </div>
+          <div class="glossary-item">
+            <div class="glossary-term">🔧 Fine-tuning</div>
+            <div class="glossary-def">Taking a pre-trained base model and training it further on a specific dataset to specialize it (e.g., medical Q&amp;A, customer service).</div>
+          </div>
+          <div class="glossary-item">
+            <div class="glossary-term">📚 RAG (Retrieval-Augmented Generation)</div>
+            <div class="glossary-def">Combining an LLM with a search system that retrieves relevant documents. Solves the "outdated knowledge" problem by injecting fresh context.</div>
+          </div>
+          <div class="glossary-item">
+            <div class="glossary-term">🧲 Context Window</div>
+            <div class="glossary-def">How much text an LLM can "see" at once (input + output). GPT-4 supports 128K tokens; Claude 3 supports up to 200K tokens (~150,000 words).</div>
+          </div>
+          <div class="glossary-item">
+            <div class="glossary-term">🤖 AI Agents</div>
+            <div class="glossary-def">LLMs that can take actions: browse the web, run code, call APIs, manage files. Coding agents like Codex and Claude Code are examples.</div>
+          </div>
+        </div>
+
+        <div class="key-points">
+          <h3>Key Takeaways</h3>
+          <ul>
+            <li>✅ LLMs are deep learning models trained on massive text datasets</li>
+            <li>✅ They work by predicting the next token — this scales to powerful capabilities</li>
+            <li>✅ Attention mechanism lets them understand context across long sequences</li>
+            <li>✅ Strong at language tasks; can "hallucinate" — always verify factual claims</li>
+            <li>✅ Context window = how much text the model can process at once</li>
+          </ul>
+        </div>
+        <button class="mark-done-btn" data-topic="llm" onclick="markDone('llm', this)">Mark as Done ✓</button>
+      </div>
+    </section>
+
+    <!-- ── Tab 5: AI Products vs. Models ── -->
+    <section id="ai-products" class="tab-panel" role="tabpanel" aria-labelledby="tab-ai-products">
+      <div class="card">
+        <h2>🛒 AI Products vs. AI Models</h2>
+        <p>
+          One of the most common sources of confusion is mixing up AI <strong>products</strong> (apps you use)
+          with AI <strong>models</strong> (the engines powering them). Click any card below to understand
+          what each one is.
+        </p>
+
+        <div class="info-box">
+          <span class="info-icon">🔑</span>
+          <div>
+            <strong>The simple rule:</strong> If you interact with it through a UI or CLI, it's a <strong>product</strong>.
+            If a developer calls it through an API to build something, it's a <strong>model</strong>.
+            (The same model can power multiple products!)
+          </div>
+        </div>
+
+        <h3>OpenAI Ecosystem</h3>
+        <div class="model-grid">
+          <div class="model-card product-card" data-model="chatgpt" onclick="showModelDetail('chatgpt')">
+            <span class="mc-icon">💬</span>
+            <span class="mc-badge badge-product">Product</span>
+            <div class="mc-title">ChatGPT</div>
+            <p class="mc-desc">The consumer AI chat app at chat.openai.com</p>
+          </div>
+          <div class="model-card product-card" data-model="codex_app" onclick="showModelDetail('codex_app')">
+            <span class="mc-icon">💻</span>
+            <span class="mc-badge badge-product">Product</span>
+            <div class="mc-title">Codex (Agent)</div>
+            <p class="mc-desc">OpenAI's agentic coding tool — writes &amp; runs code</p>
+          </div>
+          <div class="model-card model-card-item" data-model="gpt4" onclick="showModelDetail('gpt4')">
+            <span class="mc-icon">⚙️</span>
+            <span class="mc-badge badge-model">Model</span>
+            <div class="mc-title">GPT-4 / GPT-4o</div>
+            <p class="mc-desc">OpenAI's flagship LLM, available via API</p>
+          </div>
+          <div class="model-card model-card-item" data-model="codex_model" onclick="showModelDetail('codex_model')">
+            <span class="mc-icon">🔢</span>
+            <span class="mc-badge badge-api">API Model</span>
+            <div class="mc-title">Codex Models</div>
+            <p class="mc-desc">Code-specialized models (codex-mini, etc.) via API</p>
+          </div>
+        </div>
+
+        <h3>Anthropic Ecosystem</h3>
+        <div class="model-grid">
+          <div class="model-card product-card" data-model="claude_chat" onclick="showModelDetail('claude_chat')">
+            <span class="mc-icon">🎭</span>
+            <span class="mc-badge badge-product">Product</span>
+            <div class="mc-title">Claude (claude.ai)</div>
+            <p class="mc-desc">Anthropic's consumer AI assistant app</p>
+          </div>
+          <div class="model-card product-card" data-model="claude_code" onclick="showModelDetail('claude_code')">
+            <span class="mc-icon">🛠️</span>
+            <span class="mc-badge badge-product">Product</span>
+            <div class="mc-title">Claude Code</div>
+            <p class="mc-desc">Anthropic's agentic coding CLI tool</p>
+          </div>
+          <div class="model-card model-card-item" data-model="claude_sonnet" onclick="showModelDetail('claude_sonnet')">
+            <span class="mc-icon">🎵</span>
+            <span class="mc-badge badge-model">Model</span>
+            <div class="mc-title">Claude Sonnet</div>
+            <p class="mc-desc">Balanced speed &amp; capability — the workhorse model</p>
+          </div>
+          <div class="model-card model-card-item" data-model="claude_opus" onclick="showModelDetail('claude_opus')">
+            <span class="mc-icon">🏛️</span>
+            <span class="mc-badge badge-model">Model</span>
+            <div class="mc-title">Claude Opus</div>
+            <p class="mc-desc">Most powerful Claude model — complex reasoning tasks</p>
+          </div>
+        </div>
+
+        <div class="model-detail-box" id="modelDetailBox">
+          <em>👆 Click any card above to learn the details</em>
+        </div>
+
+        <h3>Summary: Products vs. Models at a glance</h3>
+        <div class="comparison-grid">
+          <div class="compare-card product" style="text-align:left">
+            <div class="compare-icon" style="text-align:center">📱</div>
+            <h4 style="text-align:center">Products (Apps)</h4>
+            <ul style="list-style:none;padding:0;font-size:.88rem;color:var(--muted)">
+              <li>• ChatGPT → chat with GPT-4</li>
+              <li>• Codex (app) → coding agent by OpenAI</li>
+              <li>• Claude.ai → chat with Claude models</li>
+              <li>• Claude Code → coding agent by Anthropic</li>
+            </ul>
+          </div>
+          <div class="compare-card model" style="text-align:left">
+            <div class="compare-icon" style="text-align:center">⚙️</div>
+            <h4 style="text-align:center">Models (Engines)</h4>
+            <ul style="list-style:none;padding:0;font-size:.88rem;color:var(--muted)">
+              <li>• GPT-4 / GPT-4o → OpenAI general LLM</li>
+              <li>• Codex models → code-specialized (API)</li>
+              <li>• Claude Sonnet → fast, balanced Anthropic LLM</li>
+              <li>• Claude Opus → most powerful Anthropic LLM</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>🎓 Knowledge Check — Quiz</h3>
+        <p>Test what you've learned across all topics!</p>
+        <div id="quizContainer" class="quiz-container">
+          <div class="quiz-question" id="quizQuestion"></div>
+          <div class="quiz-options" id="quizOptions"></div>
+          <div class="quiz-feedback" id="quizFeedback"></div>
+          <button class="quiz-next-btn" id="quizNextBtn" onclick="nextQuestion()" style="display:none">Next Question →</button>
+          <div class="quiz-progress" id="quizProgress"></div>
+        </div>
+
+        <div class="key-points">
+          <h3>Key Takeaways</h3>
+          <ul>
+            <li>✅ Products are the apps/tools you interact with — ChatGPT, Claude Code, Codex (agent)</li>
+            <li>✅ Models are the underlying AI engines — GPT-4, Claude Sonnet, Claude Opus, Codex models</li>
+            <li>✅ The same model can power multiple products or be accessed directly via API</li>
+            <li>✅ Model tiers (Sonnet vs. Opus) trade off speed/cost vs. capability</li>
+            <li>✅ Coding agents (Codex app, Claude Code) are <em>products</em> built on top of models</li>
+          </ul>
+        </div>
+        <button class="mark-done-btn" data-topic="ai-products" onclick="markDone('ai-products', this)">Mark as Done ✓</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>TPM Learning Series · AI Fundamentals · Built for technical program managers who want to understand AI</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
