@@ -1,3 +1,5 @@
+# TPM AI Launchpad
+This is a site aimed at helping technical program managers onboard into new technologies like machine learning, AI, large language models, and new patterns that are emerging in AI-assisted development, like Spectre event development 
 # TPM Learning Series
 
 An interactive learning site for Technical Program Managers to understand modern AI and software technologies — no engineering degree required.
