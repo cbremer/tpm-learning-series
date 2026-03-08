@@ -42,24 +42,24 @@
           aria-valuemax="100"
           aria-valuenow="0"
           aria-labelledby="progressLabel"></div>
-        <span class="progress-label" id="progressLabel"></span>
       </div>
+      <span class="progress-label" id="progressLabel"></span>
     </div>
   </header>
 
   <!-- Nav tabs -->
   <nav class="topic-nav" role="tablist" aria-label="Topics">
-    <button class="tab-btn active" role="tab" aria-selected="true"  data-tab="intro"           onclick="showTab('intro')">🗺️ Overview</button>
-    <button class="tab-btn"        role="tab" aria-selected="false" data-tab="machine-learning" onclick="showTab('machine-learning')">📊 Machine Learning</button>
-    <button class="tab-btn"        role="tab" aria-selected="false" data-tab="deep-learning"    onclick="showTab('deep-learning')">🧠 Deep Learning</button>
-    <button class="tab-btn"        role="tab" aria-selected="false" data-tab="llm"              onclick="showTab('llm')">💬 Large Language Models</button>
-    <button class="tab-btn"        role="tab" aria-selected="false" data-tab="ai-products"      onclick="showTab('ai-products')">🛒 AI Products vs. Models</button>
+    <button class="tab-btn active" id="tab-intro"           role="tab" aria-selected="true"  aria-controls="intro"           data-tab="intro"           onclick="showTab('intro')">🗺️ Overview</button>
+    <button class="tab-btn"        id="tab-machine-learning" role="tab" aria-selected="false" aria-controls="machine-learning" data-tab="machine-learning" onclick="showTab('machine-learning')">📊 Machine Learning</button>
+    <button class="tab-btn"        id="tab-deep-learning"    role="tab" aria-selected="false" aria-controls="deep-learning"    data-tab="deep-learning"    onclick="showTab('deep-learning')">🧠 Deep Learning</button>
+    <button class="tab-btn"        id="tab-llm"              role="tab" aria-selected="false" aria-controls="llm"              data-tab="llm"              onclick="showTab('llm')">💬 Large Language Models</button>
+    <button class="tab-btn"        id="tab-ai-products"      role="tab" aria-selected="false" aria-controls="ai-products"      data-tab="ai-products"      onclick="showTab('ai-products')">🛒 AI Products vs. Models</button>
   </nav>
 
   <main class="content-area">
 
     <!-- ── Tab 1: Overview ── -->
-    <section id="intro" class="tab-panel active" role="tabpanel">
+    <section id="intro" class="tab-panel active" role="tabpanel" aria-labelledby="tab-intro">
       <div class="card">
         <h2>🗺️ The AI Landscape — A Quick Map</h2>
         <p>
@@ -137,7 +137,7 @@
     </section>
 
     <!-- ── Tab 2: Machine Learning ── -->
-    <section id="machine-learning" class="tab-panel" role="tabpanel">
+    <section id="machine-learning" class="tab-panel" role="tabpanel" aria-labelledby="tab-machine-learning">
       <div class="card">
         <h2>📊 What is Machine Learning?</h2>
         <p>
@@ -244,7 +244,7 @@
     </section>
 
     <!-- ── Tab 3: Deep Learning ── -->
-    <section id="deep-learning" class="tab-panel" role="tabpanel">
+    <section id="deep-learning" class="tab-panel" role="tabpanel" aria-labelledby="tab-deep-learning">
       <div class="card">
         <h2>🧠 What is Deep Learning?</h2>
         <p>
@@ -351,7 +351,7 @@
     </section>
 
     <!-- ── Tab 4: LLMs ── -->
-    <section id="llm" class="tab-panel" role="tabpanel">
+    <section id="llm" class="tab-panel" role="tabpanel" aria-labelledby="tab-llm">
       <div class="card">
         <h2>💬 Large Language Models (LLMs)</h2>
         <p>
@@ -459,7 +459,7 @@
     </section>
 
     <!-- ── Tab 5: AI Products vs. Models ── -->
-    <section id="ai-products" class="tab-panel" role="tabpanel">
+    <section id="ai-products" class="tab-panel" role="tabpanel" aria-labelledby="tab-ai-products">
       <div class="card">
         <h2>🛒 AI Products vs. AI Models</h2>
         <p>

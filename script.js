@@ -217,13 +217,13 @@ const aiItemDetails = {
     title: '🎵 Claude Sonnet',
     badge: 'Model',
     badgeClass: 'badge-model',
-    text: '<strong>What it is:</strong> Anthropic\'s mid-tier Claude model — balances speed, capability, and cost. Sonnet is the "workhorse" model in the Claude family.<br/><br/><strong>Best for:</strong> Most everyday AI tasks — writing, analysis, coding assistance, summarization. Faster and cheaper than Opus.<br/><br/><strong>Versions:</strong> Released in numbered series, e.g. <code>claude-sonnet-4-5</code>, <code>claude-3-7-sonnet</code>.'
+    text: '<strong>What it is:</strong> Anthropic\'s mid-tier Claude model — balances speed, capability, and cost. Sonnet is the "workhorse" model in the Claude family.<br/><br/><strong>Best for:</strong> Most everyday AI tasks — writing, analysis, coding assistance, summarization. Faster and cheaper than Opus.<br/><br/><strong>Versions:</strong> Models have identifiers like <code>claude-3-5-sonnet-20241022</code> or <code>claude-3-7-sonnet-20250219</code>.'
   },
   claude_opus: {
     title: '🏛️ Claude Opus',
     badge: 'Model',
     badgeClass: 'badge-model',
-    text: '<strong>What it is:</strong> Anthropic\'s most powerful Claude model — the top of the Claude model family. Higher capability, but slower and more expensive than Sonnet.<br/><br/><strong>Best for:</strong> Complex reasoning, nuanced writing, hard analytical tasks where quality matters more than speed or cost.<br/><br/><strong>Versions:</strong> e.g. <code>claude-opus-4-5</code>.'
+    text: '<strong>What it is:</strong> Anthropic\'s most powerful Claude model — the top of the Claude model family. Higher capability, but slower and more expensive than Sonnet.<br/><br/><strong>Best for:</strong> Complex reasoning, nuanced writing, hard analytical tasks where quality matters more than speed or cost.<br/><br/><strong>Versions:</strong> e.g. <code>claude-3-opus-20240229</code>.'
   },
   claude_code: {
     title: '🛠️ Claude Code',
@@ -256,7 +256,7 @@ function showAttention(word) {
   });
   const explanations = {
     'The':     { targets: ['The'], desc: '"The" is a determiner — it has low semantic weight in most contexts.' },
-    'bank':    { targets: ['bank', 'river', 'money'], desc: '"Bank" is ambiguous! The model attends strongly to "river" and "money" to figure out which meaning is correct.' },
+    'bank':    { targets: ['bank', 'river'], desc: '"Bank" is ambiguous! The model attends strongly to "river" to figure out which meaning is correct — riverbank, not a financial institution.' },
     'by':      { targets: ['by', 'river', 'bank'], desc: '"By" indicates location — the model connects it to "river" and "bank" to understand spatial context.' },
     'the':     { targets: ['the', 'river'], desc: 'Second "the" — pairs closely with "river" ahead of it.' },
     'river':   { targets: ['river', 'bank', 'was'], desc: '"River" is a key disambiguation word — it helps the model understand that "bank" means riverbank, not a financial institution.' },
@@ -348,7 +348,7 @@ function renderQuestion() {
   const nextBtn    = document.getElementById('quizNextBtn');
   const progressEl = document.getElementById('quizProgress');
 
-  if (!qEl) return;
+  if (!qEl || !optEl || !feedEl || !nextBtn || !progressEl) return;
 
   qEl.textContent  = `Q${currentQuestion + 1}: ${q.q}`;
   feedEl.textContent = '';
@@ -446,9 +446,33 @@ function restartQuiz() {
   renderQuestion();
 }
 
+// ── Keyboard navigation for tablist (WAI-ARIA pattern) ──
+function initTabKeyboardNav() {
+  const nav = document.querySelector('.topic-nav[role="tablist"]');
+  if (!nav) return;
+  nav.addEventListener('keydown', (e) => {
+    const tabs = [...nav.querySelectorAll('[role="tab"]')];
+    const current = tabs.indexOf(document.activeElement);
+    if (current === -1) return;
+
+    let next = -1;
+    if (e.key === 'ArrowRight') next = (current + 1) % tabs.length;
+    if (e.key === 'ArrowLeft')  next = (current - 1 + tabs.length) % tabs.length;
+    if (e.key === 'Home')       next = 0;
+    if (e.key === 'End')        next = tabs.length - 1;
+
+    if (next !== -1) {
+      e.preventDefault();
+      tabs[next].focus();
+      showTab(tabs[next].getAttribute('data-tab'));
+    }
+  });
+}
+
 // ── Init ──
 document.addEventListener('DOMContentLoaded', () => {
   loadTheme();
   restartQuiz();
   loadProgress();
+  initTabKeyboardNav();
 });
