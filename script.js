@@ -1,7 +1,7 @@
 /* ── script.js ── */
 
 // ── State ──
-const TOPICS = ['intro', 'machine-learning', 'deep-learning', 'llm', 'ai-products'];
+const TOPICS = ['intro', 'machine-learning', 'deep-learning', 'llm', 'ai-products', 'ai-dev'];
 const completedTopics = new Set();
 const STORAGE_KEY = 'ai-basics-progress';
 const THEME_KEY   = 'ai-basics-theme';
@@ -277,6 +277,90 @@ function showAttention(word) {
   if (expEl) expEl.textContent = info.desc;
 }
 
+// ── AI-Assisted Dev tool details ──
+const aiDevToolDetails = {
+  copilot: {
+    title: '🐙 GitHub Copilot',
+    badge: 'Tool',
+    badgeClass: 'badge-product',
+    text: '<strong>What it is:</strong> An AI pair programmer built into VS Code, JetBrains, and other editors. It suggests code completions, entire functions, and documentation as you type, powered by OpenAI models.<br/><br/><strong>How TPMs see it:</strong> Developers report significantly faster time on repetitive tasks — boilerplate, tests, documentation. It does not replace judgment; it handles execution.<br/><br/><strong>Key distinction:</strong> Copilot (the editor assistant) is different from the Copilot <em>coding agent</em>, which operates autonomously on GitHub issues.'
+  },
+  copilot_agent: {
+    title: '🤖 GitHub Copilot Coding Agent',
+    badge: 'Agent',
+    badgeClass: 'badge-product',
+    text: '<strong>What it is:</strong> An autonomous AI agent embedded in GitHub. You assign it a GitHub issue and it independently writes code, runs tests, and opens a pull request — no developer interaction required until review time.<br/><br/><strong>How it works:</strong> The agent reads the issue description (and any linked context), explores the codebase, makes changes, and pushes a PR. Engineers then review and approve.<br/><br/><strong>TPM implication:</strong> Well-written issues directly determine agent success. Vague specs produce poor PRs; clear acceptance criteria produce reviewable ones.'
+  },
+  codex_app2: {
+    title: '💻 OpenAI Codex (Agent)',
+    badge: 'Agent',
+    badgeClass: 'badge-product',
+    text: '<strong>What it is:</strong> OpenAI\'s autonomous coding agent, launched in 2025. You describe a task and it independently writes code, executes it in a sandboxed environment, and returns results or a PR.<br/><br/><strong>How it\'s used:</strong> Developers assign tasks via natural language. Codex can run in parallel on multiple tasks, compressing work that would normally take hours into minutes.<br/><br/><strong>Under the hood:</strong> Powered by code-specialized Codex models (e.g., <code>codex-mini-latest</code>) accessed via the OpenAI API.'
+  },
+  claude_code2: {
+    title: '🛠️ Claude Code',
+    badge: 'Agent',
+    badgeClass: 'badge-product',
+    text: '<strong>What it is:</strong> Anthropic\'s agentic coding tool — a CLI-based agent that can read your entire codebase, write and run code, run tests, and make commits. It\'s designed for long-horizon coding tasks.<br/><br/><strong>How it\'s used:</strong> Runs in your terminal. You give it a goal; it autonomously navigates the codebase, makes changes, and reports back. It can also be used in headless/automated pipelines.<br/><br/><strong>Runs on:</strong> Claude Sonnet or Opus models under the hood.'
+  }
+};
+
+function showAIDevTool(key) {
+  document.querySelectorAll('[data-aidtool]').forEach(c => c.classList.remove('active'));
+  const card = document.querySelector(`[data-aidtool="${key}"]`);
+  if (card) card.classList.add('active');
+
+  const box = document.getElementById('aiDevToolDetailBox');
+  if (!box) return;
+  const d = aiDevToolDetails[key];
+  if (!d) return;
+  box.innerHTML = `
+    <strong>${d.title}</strong> <span class="mc-badge ${d.badgeClass}">${d.badge}</span><br/>
+    <span class="text-muted" style="font-size:.92rem">${d.text}</span>
+  `;
+}
+
+// ── Spectre Event Process Steps ──
+const spectreProcessSteps = {
+  1: {
+    icon: '📋',
+    title: 'Groom Issues',
+    text: 'Before the event, the team prepares a focused backlog of well-scoped issues. <strong>This is the most critical step.</strong> Each issue needs: a clear problem statement, explicit acceptance criteria, and relevant context (files, related issues, constraints). Vague issues lead to poor agent output.'
+  },
+  2: {
+    icon: '🤖',
+    title: 'Assign to Agents',
+    text: 'Each well-scoped issue is assigned to an AI coding agent (e.g., GitHub Copilot Coding Agent, Claude Code, or Codex). Multiple agents can be launched simultaneously — one per issue. This is the "parallel" power of Spectre events: a team of 3 engineers can run 10–20 tasks at once.'
+  },
+  3: {
+    icon: '⚡',
+    title: 'Parallel Execution',
+    text: 'While agents work autonomously, the engineering team monitors progress and handles blockers — answering agent questions, providing clarifications, or cancelling a misaligned run early. A skilled engineer can manage 5–10 concurrent agent sessions during this phase.'
+  },
+  4: {
+    icon: '🔍',
+    title: 'Human Review',
+    text: 'Agents open pull requests. Engineers review the code for correctness, security, and alignment with the original intent. AI-generated code must be reviewed with the same rigor as human-written code — the speed gain comes from the generation, not the review.'
+  },
+  5: {
+    icon: '🚀',
+    title: 'Merge & Ship',
+    text: 'Approved PRs are merged and deployed. At the end of a Spectre event, a small team may have shipped many features or bug fixes that would previously have taken days. The key TPM metric: <em>how many issues moved to "Done" per engineer-hour</em>.'
+  }
+};
+
+function explainSpectreStep(step) {
+  document.querySelectorAll('#ai-dev .process-step').forEach(s => s.classList.remove('active'));
+  const el = document.getElementById(`spectre-${step}`);
+  if (el) el.classList.add('active');
+
+  const d   = spectreProcessSteps[step];
+  const box = document.getElementById('spectreProcessDetail');
+  if (box && d) {
+    box.innerHTML = `<strong>${d.icon} Step ${step}: ${d.title}</strong><br/><span class="text-muted">${d.text}</span>`;
+  }
+}
+
 // ── Quiz ──
 const QUESTIONS = [
   {
@@ -333,6 +417,17 @@ const QUESTIONS = [
     ],
     correct: 2,
     explanation: '✅ Correct! Claude Code is a product — an agentic coding tool that runs in your terminal and can write code and make commits. Claude Sonnet is an AI model that Claude Code (and other products) can use under the hood.'
+  },
+  {
+    q: 'In AI-assisted development, what is the PRIMARY bottleneck that AI coding agents introduce?',
+    options: [
+      'Running out of GitHub Actions minutes',
+      'Human review and judgment of AI-generated code',
+      'The time it takes to write issues',
+      'API rate limits from model providers'
+    ],
+    correct: 1,
+    explanation: '✅ Correct! When AI agents can generate code autonomously, the bottleneck shifts from writing code to reviewing it. Engineers become reviewers and directors — the speed gain is in generation, but human judgment is still required before merging.'
   }
 ];
 

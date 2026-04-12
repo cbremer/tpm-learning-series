@@ -54,6 +54,7 @@
     <button class="tab-btn"        id="tab-deep-learning"    role="tab" aria-selected="false" aria-controls="deep-learning"    data-tab="deep-learning"    onclick="showTab('deep-learning')">🧠 Deep Learning</button>
     <button class="tab-btn"        id="tab-llm"              role="tab" aria-selected="false" aria-controls="llm"              data-tab="llm"              onclick="showTab('llm')">💬 Large Language Models</button>
     <button class="tab-btn"        id="tab-ai-products"      role="tab" aria-selected="false" aria-controls="ai-products"      data-tab="ai-products"      onclick="showTab('ai-products')">🛒 AI Products vs. Models</button>
+    <button class="tab-btn"        id="tab-ai-dev"           role="tab" aria-selected="false" aria-controls="ai-dev"           data-tab="ai-dev"           onclick="showTab('ai-dev')">🤝 AI-Assisted Dev</button>
   </nav>
 
   <main class="content-area">
@@ -582,6 +583,164 @@
           </ul>
         </div>
         <button class="mark-done-btn" data-topic="ai-products" onclick="markDone('ai-products', this)">Mark as Done ✓</button>
+      </div>
+    </section>
+
+    <!-- ── Tab 6: AI-Assisted Development ── -->
+    <section id="ai-dev" class="tab-panel" role="tabpanel" aria-labelledby="tab-ai-dev">
+      <div class="card">
+        <h2>🤝 AI-Assisted Development</h2>
+        <p>
+          AI is not just changing what we <em>build</em> — it is fundamentally changing <em>how</em> we build it.
+          AI coding tools are now embedded directly in the software development lifecycle, acting as pair programmers,
+          code reviewers, and autonomous agents that can complete entire tasks end-to-end.
+        </p>
+
+        <div class="analogy-box">
+          <span class="analogy-icon">💡</span>
+          <div>
+            <strong>TPM analogy:</strong> Think of AI coding tools like a highly skilled contractor who never sleeps.
+            You (or a developer on your team) can describe a task in plain language, hand it to the AI,
+            and get back a pull request — complete with code, tests, and a description.
+            Your job as a TPM shifts from coordinating <em>tasks</em> to reviewing <em>outcomes</em>.
+          </div>
+        </div>
+
+        <h3>How AI has changed the development lifecycle</h3>
+        <div class="comparison-grid">
+          <div class="compare-card ml" style="text-align:left">
+            <div class="compare-icon" style="text-align:center">🗓️</div>
+            <h4 style="text-align:center">Traditional SDLC</h4>
+            <ul style="list-style:none;padding:0;font-size:.88rem;color:var(--muted)">
+              <li>• Developer writes code from scratch</li>
+              <li>• Manual code review for every PR</li>
+              <li>• Tickets assigned one-per-engineer</li>
+              <li>• Bottleneck: developer throughput</li>
+              <li>• Cycle time measured in days/weeks</li>
+            </ul>
+          </div>
+          <div class="compare-card ai" style="text-align:left">
+            <div class="compare-icon" style="text-align:center">🤖</div>
+            <h4 style="text-align:center">AI-Assisted SDLC</h4>
+            <ul style="list-style:none;padding:0;font-size:.88rem;color:var(--muted)">
+              <li>• AI agents generate first-cut code</li>
+              <li>• AI assists with PR review &amp; summaries</li>
+              <li>• One engineer can manage multiple AI agents</li>
+              <li>• Bottleneck shifts to <em>review &amp; judgment</em></li>
+              <li>• Well-scoped tasks can close in hours</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Key AI development tools — Click to learn more</h3>
+        <div class="model-grid">
+          <div class="model-card product-card" data-aidtool="copilot" onclick="showAIDevTool('copilot')">
+            <span class="mc-icon">🐙</span>
+            <span class="mc-badge badge-product">Tool</span>
+            <div class="mc-title">GitHub Copilot</div>
+            <p class="mc-desc">In-editor AI pair programmer from GitHub</p>
+          </div>
+          <div class="model-card product-card" data-aidtool="copilot_agent" onclick="showAIDevTool('copilot_agent')">
+            <span class="mc-icon">🤖</span>
+            <span class="mc-badge badge-product">Agent</span>
+            <div class="mc-title">Copilot Coding Agent</div>
+            <p class="mc-desc">Autonomous agent that opens PRs from issues</p>
+          </div>
+          <div class="model-card product-card" data-aidtool="codex_app2" onclick="showAIDevTool('codex_app2')">
+            <span class="mc-icon">💻</span>
+            <span class="mc-badge badge-product">Agent</span>
+            <div class="mc-title">OpenAI Codex (Agent)</div>
+            <p class="mc-desc">OpenAI's autonomous coding agent</p>
+          </div>
+          <div class="model-card product-card" data-aidtool="claude_code2" onclick="showAIDevTool('claude_code2')">
+            <span class="mc-icon">🛠️</span>
+            <span class="mc-badge badge-product">Agent</span>
+            <div class="mc-title">Claude Code</div>
+            <p class="mc-desc">Anthropic's agentic CLI coding tool</p>
+          </div>
+        </div>
+        <div class="model-detail-box" id="aiDevToolDetailBox">
+          <em>👆 Click any tool above to learn the details</em>
+        </div>
+
+        <h3>🌀 Spectre Event Development</h3>
+        <p>
+          <strong>Spectre event development</strong> is an emerging AI-assisted development pattern where a team
+          deliberately brings together developers, TPMs, and AI coding agents in a structured, time-boxed session
+          to tackle a backlog of well-defined tasks collaboratively.
+        </p>
+
+        <div class="info-box">
+          <span class="info-icon">🔑</span>
+          <div>
+            <strong>What makes a Spectre event:</strong> A Spectre event is a focused development sprint — typically
+            a few hours to a day — where AI coding agents run in parallel on multiple issues simultaneously.
+            Engineers act as reviewers and directors rather than primary code authors,
+            dramatically multiplying the team's throughput.
+          </div>
+        </div>
+
+        <h3>Spectre event development — How it works</h3>
+        <div class="process-flow">
+          <div class="process-step" id="spectre-1" onclick="explainSpectreStep(1)">
+            <span class="ps-icon">📋</span>
+            <span class="ps-label">1. Groom<br/>Issues</span>
+          </div>
+          <span class="ps-arrow">→</span>
+          <div class="process-step" id="spectre-2" onclick="explainSpectreStep(2)">
+            <span class="ps-icon">🤖</span>
+            <span class="ps-label">2. Assign<br/>to Agents</span>
+          </div>
+          <span class="ps-arrow">→</span>
+          <div class="process-step" id="spectre-3" onclick="explainSpectreStep(3)">
+            <span class="ps-icon">⚡</span>
+            <span class="ps-label">3. Parallel<br/>Execution</span>
+          </div>
+          <span class="ps-arrow">→</span>
+          <div class="process-step" id="spectre-4" onclick="explainSpectreStep(4)">
+            <span class="ps-icon">🔍</span>
+            <span class="ps-label">4. Human<br/>Review</span>
+          </div>
+          <span class="ps-arrow">→</span>
+          <div class="process-step" id="spectre-5" onclick="explainSpectreStep(5)">
+            <span class="ps-icon">🚀</span>
+            <span class="ps-label">5. Merge &amp;<br/>Ship</span>
+          </div>
+        </div>
+        <div class="process-detail" id="spectreProcessDetail">
+          <em>👆 Click a step above to learn what happens at each stage</em>
+        </div>
+
+        <h3>What this means for TPMs</h3>
+        <div class="three-col-grid">
+          <div class="compare-card product">
+            <div class="compare-icon">📐</div>
+            <h4>Better issue quality</h4>
+            <p>AI agents need crisp, well-scoped specs. Your ability to write clear acceptance criteria directly impacts how much the agent can do autonomously.</p>
+          </div>
+          <div class="compare-card ai">
+            <div class="compare-icon">🔭</div>
+            <h4>Shift to review culture</h4>
+            <p>More PRs get opened faster. Teams need lightweight review processes — TPMs help design review criteria and escalation paths.</p>
+          </div>
+          <div class="compare-card ml">
+            <div class="compare-icon">📊</div>
+            <h4>New velocity metrics</h4>
+            <p>Traditional story points may not capture AI-augmented throughput. TPMs must rethink how they measure and communicate team velocity.</p>
+          </div>
+        </div>
+
+        <div class="key-points">
+          <h3>Key Takeaways</h3>
+          <ul>
+            <li>✅ AI coding tools act as autonomous agents, not just autocomplete — they open PRs and run code</li>
+            <li>✅ The development bottleneck shifts from <em>writing</em> code to <em>reviewing</em> and <em>directing</em> AI</li>
+            <li>✅ Spectre events are structured AI-assisted sprints where agents work in parallel on many issues</li>
+            <li>✅ TPMs add value by writing crisp specs, designing review workflows, and rethinking velocity metrics</li>
+            <li>✅ Well-scoped issues are the most important input to successful AI-assisted development</li>
+          </ul>
+        </div>
+        <button class="mark-done-btn" data-topic="ai-dev" onclick="markDone('ai-dev', this)">Mark as Done ✓</button>
       </div>
     </section>
 
