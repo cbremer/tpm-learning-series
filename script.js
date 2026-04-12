@@ -1,7 +1,7 @@
 /* ── script.js ── */
 
 // ── State ──
-const TOPICS = ['intro', 'machine-learning', 'deep-learning', 'llm', 'ai-products'];
+const TOPICS = ['intro', 'machine-learning', 'deep-learning', 'llm', 'ai-products', 'scenarios', 'lifecycle', 'stakeholder', 'prompts', 'ethics'];
 const completedTopics = new Set();
 const STORAGE_KEY = 'ai-basics-progress';
 const THEME_KEY   = 'ai-basics-theme';
@@ -324,15 +324,114 @@ const QUESTIONS = [
     explanation: '✅ Correct! Training is when the model sees labeled examples and adjusts its internal parameters (weights) to minimize prediction errors. This is the "learning" in machine learning.'
   },
   {
-    q: 'What is the key difference between "Claude Code" and "Claude Sonnet"?',
+    q: 'What does "data drift" mean in an ML context?',
     options: [
-      'Claude Code is cheaper than Claude Sonnet',
-      'Claude Sonnet is a product; Claude Code is a model',
-      'Claude Code is an agentic coding product; Claude Sonnet is the underlying AI model',
-      'They are different names for the same thing'
+      'The model\'s code has a bug that makes it slow',
+      'The statistical properties of real-world data change over time, degrading model performance',
+      'Data is stored in the wrong database',
+      'A dataset is too small to train on'
+    ],
+    correct: 1,
+    explanation: '✅ Correct! Data drift occurs when the real-world data the model receives in production changes from the data it was trained on. This can silently degrade model quality — which is why monitoring is critical.'
+  },
+  {
+    q: 'In a typical ML project, which phase consumes the most time?',
+    options: [
+      'Choosing the model architecture',
+      'Training the model',
+      'Data collection, cleaning, and preparation',
+      'Deploying the model to production'
     ],
     correct: 2,
-    explanation: '✅ Correct! Claude Code is a product — an agentic coding tool that runs in your terminal and can write code and make commits. Claude Sonnet is an AI model that Claude Code (and other products) can use under the hood.'
+    explanation: '✅ Correct! Data work (collection, cleaning, labeling, preparation) typically takes 60–80% of total project time. The "data quality is #1" principle plays out in practice here.'
+  },
+  {
+    q: 'What does "MLOps" stand for and what does it focus on?',
+    options: [
+      'Machine Learning Operations — practices for deploying, monitoring, and maintaining ML models in production',
+      'Multi-Layer Optimization — reducing the number of model layers',
+      'Mobile Learning Operations — running ML on mobile devices',
+      'Model Labeling Operations — the process of annotating training data'
+    ],
+    correct: 0,
+    explanation: '✅ Correct! MLOps (Machine Learning Operations) applies DevOps principles to ML systems, covering deployment pipelines, model versioning, performance monitoring, and automated retraining.'
+  },
+  {
+    q: 'What is "A/B testing" used for in AI/ML products?',
+    options: [
+      'Testing two different programming languages for the same model',
+      'Comparing two model versions (or configurations) in production to see which performs better',
+      'Running a model on two different cloud providers simultaneously',
+      'Validating a model against alphabetical vs. numerical datasets'
+    ],
+    correct: 1,
+    explanation: '✅ Correct! A/B testing (also called champion/challenger testing) lets you safely roll out a new model version to a subset of users and compare its real-world performance against the existing model before full rollout.'
+  },
+  {
+    q: 'When explaining a model\'s "precision" to a non-technical stakeholder, the best analogy is:',
+    options: [
+      '"How fast the model runs on your laptop"',
+      '"Of all the positive predictions the model made, how many were actually correct"',
+      '"How many examples were used to train the model"',
+      '"Whether the model can handle multiple languages"'
+    ],
+    correct: 1,
+    explanation: '✅ Correct! Precision = "when the model says yes, how often is it right?" A useful real-world frame: if a spam filter flags 100 emails as spam and 90 are actually spam, its precision is 90%.'
+  },
+  {
+    q: 'A stakeholder asks: "Why did the AI make that decision?" This relates to which AI concept?',
+    options: [
+      'Model training speed',
+      'Explainability / Interpretability — the ability to understand and communicate why a model produced a specific output',
+      'Data pipeline throughput',
+      'Token context window size'
+    ],
+    correct: 1,
+    explanation: '✅ Correct! Explainability (or interpretability) addresses the "black box" problem. Stakeholders, regulators, and users often need to understand why an AI made a decision — especially in high-stakes domains like lending, healthcare, or hiring.'
+  },
+  {
+    q: 'What is "few-shot prompting"?',
+    options: [
+      'Sending only a short prompt to save tokens',
+      'Providing a small number of input→output examples inside the prompt to guide the model\'s response format',
+      'Training a model on a very small dataset',
+      'Using an LLM with a small context window'
+    ],
+    correct: 1,
+    explanation: '✅ Correct! Few-shot prompting provides 2–5 worked examples directly in the prompt (e.g., input → expected output pairs). This helps the LLM understand the exact format and style you want without fine-tuning.'
+  },
+  {
+    q: 'What is "chain-of-thought" (CoT) prompting?',
+    options: [
+      'Chaining multiple LLM API calls together in a pipeline',
+      'Asking the model to show its step-by-step reasoning before giving a final answer',
+      'Using multiple prompts to translate text between languages',
+      'Connecting a model to a vector database for retrieval'
+    ],
+    correct: 1,
+    explanation: '✅ Correct! Chain-of-thought prompting tells the model to "think step by step" before answering. This dramatically improves performance on math, logic, and multi-step reasoning tasks.'
+  },
+  {
+    q: 'What is AI "hallucination"?',
+    options: [
+      'A visual glitch that occurs when generating images',
+      'When a model produces confident-sounding but factually incorrect or fabricated information',
+      'The model running too slowly due to high compute demands',
+      'A security vulnerability in model APIs'
+    ],
+    correct: 1,
+    explanation: '✅ Correct! LLMs can generate plausible-sounding but wrong information — inventing citations, misquoting facts, or fabricating data — while sounding confident. Always verify important factual claims from LLM outputs.'
+  },
+  {
+    q: 'Which regulation specifically applies to AI systems used in the European Union?',
+    options: [
+      'HIPAA',
+      'The EU AI Act — a risk-based framework that categorizes AI systems by risk level',
+      'CCPA',
+      'SOC 2'
+    ],
+    correct: 1,
+    explanation: '✅ Correct! The EU AI Act (2024) is the world\'s first comprehensive AI law. It classifies AI applications by risk (unacceptable, high, limited, minimal) and imposes requirements accordingly — including transparency, human oversight, and conformity assessments for high-risk systems.'
   }
 ];
 
@@ -467,6 +566,220 @@ function initTabKeyboardNav() {
       showTab(tabs[next].getAttribute('data-tab'));
     }
   });
+}
+
+// ── TPM Scenarios ──
+const scenarioDetails = {
+  data_pipeline: {
+    title: '📉 Data Pipeline Delays',
+    challenge: 'The data engineering team says the training data won\'t be ready for 3 more weeks, blocking your ML team.',
+    tpmActions: [
+      'Map the dependency: which model training milestones are blocked vs. unblocked?',
+      'Ask what subset of data is available now — can the team start with a smaller slice?',
+      'Negotiate parallel workstreams: model architecture work, infrastructure setup, evaluation framework.',
+      'Re-baseline the timeline with stakeholders — communicate the impact and revised delivery date.',
+      'Identify the root cause: upstream data source? Schema changes? Labeling backlog?'
+    ],
+    watchFor: 'Teams often underestimate labeling time. Ask specifically: "Is the data collected, or does it still need to be labeled/annotated?"'
+  },
+  model_perf: {
+    title: '📊 Model Performance Below Target',
+    challenge: 'The model reaches 72% accuracy but the product requirement was 85%. Launch is in 6 weeks.',
+    tpmActions: [
+      'Ask the team to diagnose the gap: is it a data problem, model architecture problem, or evaluation problem?',
+      'Challenge the 85% target — is it based on user research or was it an aspirational guess?',
+      'Explore the 80/20: what subset of use cases hits 90%+ accuracy? Could you launch scoped to those?',
+      'Discuss a phased launch: human-in-the-loop review for low-confidence predictions.',
+      'Set up a war room cadence: daily standup on accuracy improvement experiments.'
+    ],
+    watchFor: 'Beware of "accuracy theater" — overall accuracy can look fine while the model fails badly on minority classes that matter most to users.'
+  },
+  scope_creep: {
+    title: '🌊 AI Scope Creep',
+    challenge: 'Stakeholders keep adding new model capabilities mid-sprint: "Can it also do sentiment analysis? And detect language?"',
+    tpmActions: [
+      'Document every request in a backlog with the requestor and business justification.',
+      'Protect the current sprint — apply standard change control, even for "quick" additions.',
+      'Quantify the cost: "Adding that feature moves our delivery date by 2 weeks."',
+      'Hold a roadmap review meeting to prioritize the backlog together with stakeholders.',
+      'Separate the MVP from the future wishlist — use a Now/Next/Later framework.'
+    ],
+    watchFor: 'ML tasks take longer than expected because experimentation is non-linear. A "small" new feature may require a fundamentally different model architecture.'
+  },
+  team_coord: {
+    title: '🤝 Research vs. Engineering Friction',
+    challenge: 'Research scientists deliver promising model prototypes, but ML engineers say they\'re "unshippable" — not production-ready.',
+    tpmActions: [
+      'Define "done" jointly: create shared Definition of Done that includes production readiness criteria.',
+      'Embed a production engineering requirement in research milestones — not just accuracy numbers.',
+      'Run a tech transfer session: researcher walks engineer through the model, code, and assumptions.',
+      'Build a production readiness checklist: latency targets, memory footprint, logging, monitoring hooks.',
+      'Allocate explicit "productionization" time in the project plan — it\'s always underestimated.'
+    ],
+    watchFor: 'Research prototypes often use different libraries, data formats, and assumptions than production. Budget 2–4x the prototype time for productionization.'
+  },
+  stakeholder_pressure: {
+    title: '📣 Unrealistic Stakeholder Expectations',
+    challenge: 'An executive saw a ChatGPT demo and now expects your team to build "the same thing" in 8 weeks.',
+    tpmActions: [
+      'Anchor on the specific business problem — "what decision or outcome do you want AI to improve?"',
+      'Educate on the AI spectrum: a GPT-4-like model took thousands of GPUs and billions of dollars to train.',
+      'Propose a realistic MVP: a narrowly scoped solution using existing APIs or fine-tuned models.',
+      'Share a reference timeline: typical enterprise AI project = 3–9 months from problem definition to production.',
+      'Use the "buy vs. build" lens: can you achieve 80% of the value by integrating an existing API today?'
+    ],
+    watchFor: 'Demo ≠ production. Live demos use ideal inputs, skip edge cases, and hide failure modes. Always distinguish demo performance from real-world reliability.'
+  }
+};
+
+function showScenario(key) {
+  document.querySelectorAll('.scenario-card').forEach(c => c.classList.remove('active'));
+  const card = document.querySelector(`[data-scenario="${key}"]`);
+  if (card) card.classList.add('active');
+
+  const box = document.getElementById('scenarioDetailBox');
+  if (!box) return;
+  const d = scenarioDetails[key];
+  if (!d) return;
+
+  const actionsHtml = d.tpmActions.map(a => `<li style="padding:.25rem 0;font-size:.9rem">✅ ${a}</li>`).join('');
+  box.innerHTML = `
+    <strong>${d.title}</strong><br/>
+    <span style="font-size:.88rem;color:var(--muted)">
+      <strong>Scenario:</strong> ${d.challenge}<br/><br/>
+      <strong>TPM Actions:</strong>
+      <ul style="list-style:none;padding:0;margin:.5rem 0">${actionsHtml}</ul>
+      <div style="background:#fef3c7;border:1px solid #fcd34d;border-radius:8px;padding:.75rem 1rem;margin-top:.5rem">
+        <strong>⚠️ Watch for:</strong> ${d.watchFor}
+      </div>
+    </span>
+  `;
+}
+
+// ── AI Lifecycle ──
+const lifecycleSteps = {
+  1: {
+    icon: '🔭', title: 'Discover',
+    text: '<strong>Identify the business problem.</strong> Not every problem needs AI. Ask: Does this problem have enough data? Is the ROI worth the complexity? Could a simpler rule-based system work? <br/><br/><strong>TPM focus:</strong> Facilitate problem framing workshops. Challenge the "we need AI" assumption. Document success metrics upfront.'
+  },
+  2: {
+    icon: '📋', title: 'Define',
+    text: '<strong>Scope the ML problem.</strong> Translate the business objective into an ML task: classification, regression, ranking, generation? Define input data, expected output, and measurable accuracy targets. <br/><br/><strong>TPM focus:</strong> Get explicit alignment on "good enough" criteria. Ambiguous success metrics derail projects later.'
+  },
+  3: {
+    icon: '🗄️', title: 'Data',
+    text: '<strong>Collect, label, and prepare training data.</strong> This phase takes 60–80% of project time. Involves data sourcing, cleaning, deduplication, labeling/annotation, and train/validation/test splitting. <br/><br/><strong>TPM focus:</strong> Track labeling progress as a first-class milestone. Data quality is the #1 predictor of model quality.'
+  },
+  4: {
+    icon: '🔬', title: 'Experiment',
+    text: '<strong>Explore model approaches.</strong> Data scientists run experiments: baseline models, feature engineering, architecture choices, hyperparameter tuning. This is non-linear — expect iteration. <br/><br/><strong>TPM focus:</strong> Track experiments as tickets. Ask "what did we learn?" not just "did it work?" Use MLflow, W&B, or similar tools to log runs.'
+  },
+  5: {
+    icon: '🏗️', title: 'Build',
+    text: '<strong>Develop the production model and pipeline.</strong> The winning experiment gets productionized: training pipelines, serving infrastructure, preprocessing code, model versioning. <br/><br/><strong>TPM focus:</strong> This is where research→engineering handoff friction peaks. Have a shared Definition of Done that includes latency, memory, and reliability requirements.'
+  },
+  6: {
+    icon: '🧪', title: 'Evaluate',
+    text: '<strong>Validate model quality and safety.</strong> Offline evaluation (hold-out test sets), bias audits, edge case testing, and stakeholder reviews before launch. <br/><br/><strong>TPM focus:</strong> Don\'t skip bias testing. Ensure the test set reflects real production distribution, not just the easy cases.'
+  },
+  7: {
+    icon: '🚀', title: 'Deploy',
+    text: '<strong>Release to production.</strong> Shadow mode first (log predictions without acting on them), then canary release (small % of traffic), then full rollout. Set up a rollback plan. <br/><br/><strong>TPM focus:</strong> Agree on rollback criteria before deploying. Who has the authority to roll back, and what triggers it?'
+  },
+  8: {
+    icon: '📡', title: 'Monitor & Iterate',
+    text: '<strong>Track production performance continuously.</strong> Monitor prediction quality, data drift, latency, error rates, and business KPIs. Schedule retraining cycles. <br/><br/><strong>TPM focus:</strong> ML is never "done." Build monitoring and retraining into the ongoing operational plan — not a one-time launch activity.'
+  }
+};
+
+function showLifecycleStep(step) {
+  document.querySelectorAll('.lifecycle-step').forEach(s => s.classList.remove('active'));
+  const el = document.getElementById(`lc-${step}`);
+  if (el) el.classList.add('active');
+
+  const d   = lifecycleSteps[step];
+  const box = document.getElementById('lifecycleDetail');
+  if (box && d) {
+    box.innerHTML = `<strong>${d.icon} Phase ${step}: ${d.title}</strong><br/><span class="text-muted" style="font-size:.92rem">${d.text}</span>`;
+  }
+}
+
+// ── Prompt Engineering ──
+const promptTechniques = {
+  zero_shot: {
+    icon: '🎯', title: 'Zero-Shot',
+    desc: 'Ask directly — no examples provided',
+    explanation: 'The simplest technique. You describe the task and trust the model\'s pre-trained knowledge. Works well for common tasks; less reliable for niche formats.',
+    example: `Classify the sentiment of this customer review as Positive, Negative, or Neutral.
+
+Review: "The delivery was two days late but the product quality exceeded my expectations."
+
+Sentiment:`
+  },
+  few_shot: {
+    icon: '📋', title: 'Few-Shot',
+    desc: 'Provide 2–5 examples in the prompt',
+    explanation: 'Showing the model examples of the desired input→output pattern dramatically improves format consistency and accuracy, especially for custom tasks.',
+    example: `Classify sentiment. Examples:
+Review: "Fast shipping, great quality!" → Positive
+Review: "Arrived broken, terrible support." → Negative
+Review: "It works as described." → Neutral
+
+Now classify:
+Review: "The color was different than pictured but it fits well." →`
+  },
+  chain_of_thought: {
+    icon: '🔗', title: 'Chain-of-Thought',
+    desc: 'Ask the model to reason step by step',
+    explanation: 'Adding "think step by step" or "let\'s reason through this" significantly improves performance on math, logic, planning, and multi-step problems.',
+    example: `A team has 3 ML engineers and 2 data scientists. Each ML engineer needs 2 weeks for a task; each data scientist needs 3 weeks for theirs. If all tasks must complete before launch, what is the minimum launch date if they start on Jan 6?
+
+Think step by step before giving the final answer.`
+  },
+  role_prompting: {
+    icon: '🎭', title: 'Role Prompting',
+    desc: 'Assign a persona or role to the model',
+    explanation: 'Framing the model as an expert in a domain (e.g., "You are a senior TPM at a tech company") helps it adopt the appropriate tone, vocabulary, and depth of response.',
+    example: `You are a senior Technical Program Manager at a large tech company with 10 years of experience managing AI/ML projects.
+
+A VP asks you: "Our model's precision dropped from 91% to 84% in the last two weeks. What should I be worried about and what actions should we take?"
+
+Provide a structured response with your immediate concerns and recommended next steps.`
+  },
+  structured_output: {
+    icon: '📊', title: 'Structured Output',
+    desc: 'Request a specific format (JSON, table, list)',
+    explanation: 'Specifying the exact output format (JSON schema, markdown table, numbered list) makes LLM output much easier to parse programmatically or present to stakeholders.',
+    example: `Summarize the following project status update as a JSON object with these fields: status (Green/Yellow/Red), summary (one sentence), blockers (array of strings), next_actions (array of strings).
+
+Update: "The model training completed on schedule. However, we discovered the test set had 15% label noise, so evaluation results may be inflated. We're re-labeling 500 samples this week before re-running evaluation. The data team needs access to the annotation tool by Thursday."`
+  }
+};
+
+function showPromptTechnique(key) {
+  document.querySelectorAll('.prompt-tech-card').forEach(c => c.classList.remove('active'));
+  const card = document.querySelector(`[data-technique="${key}"]`);
+  if (card) card.classList.add('active');
+
+  const box = document.getElementById('promptDetailBox');
+  if (!box) return;
+  const d = promptTechniques[key];
+  if (!d) return;
+
+  box.innerHTML = `
+    <strong>${d.icon} ${d.title}</strong><br/>
+    <span class="text-muted" style="font-size:.9rem">${d.explanation}</span>
+    <br/><br/>
+    <span class="prompt-label">Example Prompt</span>
+    <div class="prompt-box">${d.example}</div>
+  `;
+}
+
+// ── Ethics Checklist ──
+function toggleChecklist(el) {
+  el.classList.toggle('checked');
+  const check = el.querySelector('.checklist-check');
+  if (check) check.textContent = el.classList.contains('checked') ? '✓' : '';
 }
 
 // ── Init ──
