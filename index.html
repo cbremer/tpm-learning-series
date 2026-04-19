@@ -611,31 +611,31 @@
 
       <h3>Common Scenarios — Click to explore</h3>
       <div class="scenario-grid">
-        <div class="scenario-card" data-scenario="data_pipeline" onclick="showScenario('data_pipeline')">
+        <button type="button" class="scenario-card" data-scenario="data_pipeline" onclick="showScenario('data_pipeline')">
           <span class="sc-icon">📉</span>
           <div class="sc-title">Data Pipeline Delays</div>
           <p class="sc-desc">Training data isn't ready on time, blocking the ML team</p>
-        </div>
-        <div class="scenario-card" data-scenario="model_perf" onclick="showScenario('model_perf')">
+        </button>
+        <button type="button" class="scenario-card" data-scenario="model_perf" onclick="showScenario('model_perf')">
           <span class="sc-icon">📊</span>
           <div class="sc-title">Model Below Target</div>
           <p class="sc-desc">Model accuracy misses the required threshold near launch</p>
-        </div>
-        <div class="scenario-card" data-scenario="scope_creep" onclick="showScenario('scope_creep')">
+        </button>
+        <button type="button" class="scenario-card" data-scenario="scope_creep" onclick="showScenario('scope_creep')">
           <span class="sc-icon">🌊</span>
           <div class="sc-title">AI Scope Creep</div>
           <p class="sc-desc">Stakeholders keep adding AI capabilities mid-sprint</p>
-        </div>
-        <div class="scenario-card" data-scenario="team_coord" onclick="showScenario('team_coord')">
+        </button>
+        <button type="button" class="scenario-card" data-scenario="team_coord" onclick="showScenario('team_coord')">
           <span class="sc-icon">🤝</span>
           <div class="sc-title">Research vs. Engineering</div>
           <p class="sc-desc">Research prototypes are "unshippable" per the engineering team</p>
-        </div>
-        <div class="scenario-card" data-scenario="stakeholder_pressure" onclick="showScenario('stakeholder_pressure')">
+        </button>
+        <button type="button" class="scenario-card" data-scenario="stakeholder_pressure" onclick="showScenario('stakeholder_pressure')">
           <span class="sc-icon">📣</span>
           <div class="sc-title">Unrealistic Expectations</div>
           <p class="sc-desc">Exec wants a ChatGPT clone built in 8 weeks</p>
-        </div>
+        </button>
       </div>
 
       <div class="scenario-detail" id="scenarioDetailBox">
@@ -697,45 +697,45 @@
 
       <h3>The 8 Phases of an AI Project — Click each phase to learn more</h3>
       <div class="process-flow">
-        <div class="process-step lifecycle-step" id="lc-1" onclick="showLifecycleStep(1)">
+        <button type="button" class="process-step lifecycle-step" id="lc-1" onclick="showLifecycleStep(1)">
           <span class="ps-icon">🔭</span>
           <span class="ps-label">1. Discover</span>
-        </div>
+        </button>
         <span class="ps-arrow">→</span>
-        <div class="process-step lifecycle-step" id="lc-2" onclick="showLifecycleStep(2)">
+        <button type="button" class="process-step lifecycle-step" id="lc-2" onclick="showLifecycleStep(2)">
           <span class="ps-icon">📋</span>
           <span class="ps-label">2. Define</span>
-        </div>
+        </button>
         <span class="ps-arrow">→</span>
-        <div class="process-step lifecycle-step" id="lc-3" onclick="showLifecycleStep(3)">
+        <button type="button" class="process-step lifecycle-step" id="lc-3" onclick="showLifecycleStep(3)">
           <span class="ps-icon">🗄️</span>
           <span class="ps-label">3. Data</span>
-        </div>
+        </button>
         <span class="ps-arrow">→</span>
-        <div class="process-step lifecycle-step" id="lc-4" onclick="showLifecycleStep(4)">
+        <button type="button" class="process-step lifecycle-step" id="lc-4" onclick="showLifecycleStep(4)">
           <span class="ps-icon">🔬</span>
           <span class="ps-label">4. Experiment</span>
-        </div>
+        </button>
         <span class="ps-arrow">→</span>
-        <div class="process-step lifecycle-step" id="lc-5" onclick="showLifecycleStep(5)">
+        <button type="button" class="process-step lifecycle-step" id="lc-5" onclick="showLifecycleStep(5)">
           <span class="ps-icon">🏗️</span>
           <span class="ps-label">5. Build</span>
-        </div>
+        </button>
         <span class="ps-arrow">→</span>
-        <div class="process-step lifecycle-step" id="lc-6" onclick="showLifecycleStep(6)">
+        <button type="button" class="process-step lifecycle-step" id="lc-6" onclick="showLifecycleStep(6)">
           <span class="ps-icon">🧪</span>
           <span class="ps-label">6. Evaluate</span>
-        </div>
+        </button>
         <span class="ps-arrow">→</span>
-        <div class="process-step lifecycle-step" id="lc-7" onclick="showLifecycleStep(7)">
+        <button type="button" class="process-step lifecycle-step" id="lc-7" onclick="showLifecycleStep(7)">
           <span class="ps-icon">🚀</span>
           <span class="ps-label">7. Deploy</span>
-        </div>
+        </button>
         <span class="ps-arrow">→</span>
-        <div class="process-step lifecycle-step" id="lc-8" onclick="showLifecycleStep(8)">
+        <button type="button" class="process-step lifecycle-step" id="lc-8" onclick="showLifecycleStep(8)">
           <span class="ps-icon">📡</span>
           <span class="ps-label">8. Monitor</span>
-        </div>
+        </button>
       </div>
       <div class="process-detail" id="lifecycleDetail">
         <em>👆 Click a phase above to learn about it</em>
@@ -949,31 +949,31 @@
 
       <h3>5 Core Techniques — Click to see examples</h3>
       <div class="prompt-tech-grid">
-        <div class="prompt-tech-card" data-technique="zero_shot" onclick="showPromptTechnique('zero_shot')">
+        <button type="button" class="prompt-tech-card" data-technique="zero_shot" onclick="showPromptTechnique('zero_shot')">
           <span class="ptc-icon">🎯</span>
           <div class="ptc-title">Zero-Shot</div>
           <p class="ptc-desc">Ask directly — no examples</p>
-        </div>
-        <div class="prompt-tech-card" data-technique="few_shot" onclick="showPromptTechnique('few_shot')">
+        </button>
+        <button type="button" class="prompt-tech-card" data-technique="few_shot" onclick="showPromptTechnique('few_shot')">
           <span class="ptc-icon">📋</span>
           <div class="ptc-title">Few-Shot</div>
           <p class="ptc-desc">Provide 2–5 worked examples</p>
-        </div>
-        <div class="prompt-tech-card" data-technique="chain_of_thought" onclick="showPromptTechnique('chain_of_thought')">
+        </button>
+        <button type="button" class="prompt-tech-card" data-technique="chain_of_thought" onclick="showPromptTechnique('chain_of_thought')">
           <span class="ptc-icon">🔗</span>
           <div class="ptc-title">Chain-of-Thought</div>
           <p class="ptc-desc">Ask the model to reason step by step</p>
-        </div>
-        <div class="prompt-tech-card" data-technique="role_prompting" onclick="showPromptTechnique('role_prompting')">
+        </button>
+        <button type="button" class="prompt-tech-card" data-technique="role_prompting" onclick="showPromptTechnique('role_prompting')">
           <span class="ptc-icon">🎭</span>
           <div class="ptc-title">Role Prompting</div>
           <p class="ptc-desc">Assign an expert persona to the model</p>
-        </div>
-        <div class="prompt-tech-card" data-technique="structured_output" onclick="showPromptTechnique('structured_output')">
+        </button>
+        <button type="button" class="prompt-tech-card" data-technique="structured_output" onclick="showPromptTechnique('structured_output')">
           <span class="ptc-icon">📊</span>
           <div class="ptc-title">Structured Output</div>
           <p class="ptc-desc">Request a specific format (JSON, table)</p>
-        </div>
+        </button>
       </div>
       <div class="prompt-detail" id="promptDetailBox">
         <em>👆 Click a technique above to see an explanation and example prompt</em>
@@ -1113,36 +1113,36 @@
       <h3>Responsible AI Launch Checklist</h3>
       <p style="font-size:.88rem;color:var(--muted)">Click each item to mark it as reviewed for your project:</p>
       <ul class="checklist" id="raiChecklist">
-        <li class="checklist-item" onclick="toggleChecklist(this)">
-          <div class="checklist-check"></div>
+        <li class="checklist-item" role="checkbox" aria-checked="false" tabindex="0" onclick="toggleChecklist(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleChecklist(this)}">
+          <div class="checklist-check" aria-hidden="true"></div>
           <div><div class="checklist-text">📊 Bias audit completed</div><div class="checklist-subtext">Evaluation metrics disaggregated by relevant demographic slices; no significant disparate impact identified</div></div>
         </li>
-        <li class="checklist-item" onclick="toggleChecklist(this)">
-          <div class="checklist-check"></div>
+        <li class="checklist-item" role="checkbox" aria-checked="false" tabindex="0" onclick="toggleChecklist(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleChecklist(this)}">
+          <div class="checklist-check" aria-hidden="true"></div>
           <div><div class="checklist-text">🔍 Explainability requirements addressed</div><div class="checklist-subtext">Team can explain model decisions to affected users and regulators; documentation exists</div></div>
         </li>
-        <li class="checklist-item" onclick="toggleChecklist(this)">
-          <div class="checklist-check"></div>
+        <li class="checklist-item" role="checkbox" aria-checked="false" tabindex="0" onclick="toggleChecklist(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleChecklist(this)}">
+          <div class="checklist-check" aria-hidden="true"></div>
           <div><div class="checklist-text">👤 Human-in-the-loop defined</div><div class="checklist-subtext">High-stakes or low-confidence predictions have a human review workflow, not fully automated</div></div>
         </li>
-        <li class="checklist-item" onclick="toggleChecklist(this)">
-          <div class="checklist-check"></div>
+        <li class="checklist-item" role="checkbox" aria-checked="false" tabindex="0" onclick="toggleChecklist(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleChecklist(this)}">
+          <div class="checklist-check" aria-hidden="true"></div>
           <div><div class="checklist-text">🔒 Data privacy &amp; security reviewed</div><div class="checklist-subtext">PII handling, data retention, consent, and access controls validated with legal/privacy team</div></div>
         </li>
-        <li class="checklist-item" onclick="toggleChecklist(this)">
-          <div class="checklist-check"></div>
+        <li class="checklist-item" role="checkbox" aria-checked="false" tabindex="0" onclick="toggleChecklist(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleChecklist(this)}">
+          <div class="checklist-check" aria-hidden="true"></div>
           <div><div class="checklist-text">⚖️ Legal &amp; compliance sign-off obtained</div><div class="checklist-subtext">Relevant regulations (GDPR, sector rules, EU AI Act tier) reviewed; legal clearance documented</div></div>
         </li>
-        <li class="checklist-item" onclick="toggleChecklist(this)">
-          <div class="checklist-check"></div>
+        <li class="checklist-item" role="checkbox" aria-checked="false" tabindex="0" onclick="toggleChecklist(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleChecklist(this)}">
+          <div class="checklist-check" aria-hidden="true"></div>
           <div><div class="checklist-text">🚨 Failure mode analysis done</div><div class="checklist-subtext">Edge cases, adversarial inputs, and failure scenarios documented; severity and likelihood assessed</div></div>
         </li>
-        <li class="checklist-item" onclick="toggleChecklist(this)">
-          <div class="checklist-check"></div>
+        <li class="checklist-item" role="checkbox" aria-checked="false" tabindex="0" onclick="toggleChecklist(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleChecklist(this)}">
+          <div class="checklist-check" aria-hidden="true"></div>
           <div><div class="checklist-text">📡 Production monitoring in place</div><div class="checklist-subtext">Alerts configured for accuracy degradation, data drift, and anomalous output patterns</div></div>
         </li>
-        <li class="checklist-item" onclick="toggleChecklist(this)">
-          <div class="checklist-check"></div>
+        <li class="checklist-item" role="checkbox" aria-checked="false" tabindex="0" onclick="toggleChecklist(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleChecklist(this)}">
+          <div class="checklist-check" aria-hidden="true"></div>
           <div><div class="checklist-text">🔄 Rollback plan defined</div><div class="checklist-subtext">Criteria and process for reverting to previous model version or disabling AI feature documented and tested</div></div>
         </li>
       </ul>

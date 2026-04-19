@@ -260,6 +260,9 @@ code {
   border-radius: var(--radius);
   cursor: pointer;
   min-width: 80px;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
   transition: border-color var(--transition), background var(--transition), transform var(--transition);
 }
 .process-step:hover  { border-color: var(--primary); background: #ede9fe22; transform: translateY(-2px); }
@@ -539,6 +542,10 @@ code {
   border-radius: var(--radius);
   padding: 1.25rem;
   cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
   transition: border-color var(--transition), background var(--transition), transform var(--transition);
 }
 .scenario-card:hover  { transform: translateY(-2px); box-shadow: var(--shadow); }
@@ -570,6 +577,10 @@ code {
   border-radius: var(--radius);
   padding: 1rem;
   cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
   transition: border-color var(--transition), background var(--transition), transform var(--transition);
 }
 .prompt-tech-card:hover  { border-color: var(--primary); background: #ede9fe22; transform: translateY(-1px); }

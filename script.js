@@ -645,14 +645,14 @@ function showScenario(key) {
   const actionsHtml = d.tpmActions.map(a => `<li style="padding:.25rem 0;font-size:.9rem">✅ ${a}</li>`).join('');
   box.innerHTML = `
     <strong>${d.title}</strong><br/>
-    <span style="font-size:.88rem;color:var(--muted)">
+    <div style="font-size:.88rem;color:var(--muted)">
       <strong>Scenario:</strong> ${d.challenge}<br/><br/>
       <strong>TPM Actions:</strong>
       <ul style="list-style:none;padding:0;margin:.5rem 0">${actionsHtml}</ul>
       <div style="background:#fef3c7;border:1px solid #fcd34d;border-radius:8px;padding:.75rem 1rem;margin-top:.5rem">
         <strong>⚠️ Watch for:</strong> ${d.watchFor}
       </div>
-    </span>
+    </div>
   `;
 }
 
@@ -778,8 +778,10 @@ function showPromptTechnique(key) {
 // ── Ethics Checklist ──
 function toggleChecklist(el) {
   el.classList.toggle('checked');
+  const isChecked = el.classList.contains('checked');
+  el.setAttribute('aria-checked', String(isChecked));
   const check = el.querySelector('.checklist-check');
-  if (check) check.textContent = el.classList.contains('checked') ? '✓' : '';
+  if (check) check.textContent = isChecked ? '✓' : '';
 }
 
 // ── Init ──
