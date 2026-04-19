@@ -54,6 +54,11 @@
     <button class="tab-btn"        id="tab-deep-learning"    role="tab" aria-selected="false" aria-controls="deep-learning"    data-tab="deep-learning"    onclick="showTab('deep-learning')">🧠 Deep Learning</button>
     <button class="tab-btn"        id="tab-llm"              role="tab" aria-selected="false" aria-controls="llm"              data-tab="llm"              onclick="showTab('llm')">💬 Large Language Models</button>
     <button class="tab-btn"        id="tab-ai-products"      role="tab" aria-selected="false" aria-controls="ai-products"      data-tab="ai-products"      onclick="showTab('ai-products')">🛒 AI Products vs. Models</button>
+    <button class="tab-btn"        id="tab-scenarios"        role="tab" aria-selected="false" aria-controls="scenarios"        data-tab="scenarios"        onclick="showTab('scenarios')">🗓️ TPM Scenarios</button>
+    <button class="tab-btn"        id="tab-lifecycle"        role="tab" aria-selected="false" aria-controls="lifecycle"        data-tab="lifecycle"        onclick="showTab('lifecycle')">🔄 AI Lifecycle</button>
+    <button class="tab-btn"        id="tab-stakeholder"      role="tab" aria-selected="false" aria-controls="stakeholder"      data-tab="stakeholder"      onclick="showTab('stakeholder')">🗣️ Stakeholder Comms</button>
+    <button class="tab-btn"        id="tab-prompts"          role="tab" aria-selected="false" aria-controls="prompts"          data-tab="prompts"          onclick="showTab('prompts')">✍️ Prompt Engineering</button>
+    <button class="tab-btn"        id="tab-ethics"           role="tab" aria-selected="false" aria-controls="ethics"           data-tab="ethics"           onclick="showTab('ethics')">⚖️ Risk &amp; Ethics</button>
   </nav>
 
   <main class="content-area">
@@ -584,6 +589,577 @@
         <button class="mark-done-btn" data-topic="ai-products" onclick="markDone('ai-products', this)">Mark as Done ✓</button>
       </div>
     </section>
+
+  <!-- ── Tab 6: TPM Scenarios ── -->
+  <section id="scenarios" class="tab-panel" role="tabpanel" aria-labelledby="tab-scenarios">
+    <div class="card">
+      <h2>🗓️ Practical TPM Scenarios</h2>
+      <p>
+        Real AI/ML projects rarely go according to plan. These scenarios cover the most common challenges
+        TPMs encounter — click each one to see how to navigate it.
+      </p>
+
+      <div class="analogy-box">
+        <span class="analogy-icon">💡</span>
+        <div>
+          <strong>TPM insight:</strong> AI projects have the same stakeholder, timeline, and communication
+          challenges as any other project — plus unique technical unpredictability. The model might not work.
+          The data might not exist. The "simple tweak" might require three months of experimentation.
+          Your job is to create space for that uncertainty while still moving forward.
+        </div>
+      </div>
+
+      <h3>Common Scenarios — Click to explore</h3>
+      <div class="scenario-grid">
+        <button type="button" class="scenario-card" data-scenario="data_pipeline" onclick="showScenario('data_pipeline')">
+          <span class="sc-icon">📉</span>
+          <div class="sc-title">Data Pipeline Delays</div>
+          <p class="sc-desc">Training data isn't ready on time, blocking the ML team</p>
+        </button>
+        <button type="button" class="scenario-card" data-scenario="model_perf" onclick="showScenario('model_perf')">
+          <span class="sc-icon">📊</span>
+          <div class="sc-title">Model Below Target</div>
+          <p class="sc-desc">Model accuracy misses the required threshold near launch</p>
+        </button>
+        <button type="button" class="scenario-card" data-scenario="scope_creep" onclick="showScenario('scope_creep')">
+          <span class="sc-icon">🌊</span>
+          <div class="sc-title">AI Scope Creep</div>
+          <p class="sc-desc">Stakeholders keep adding AI capabilities mid-sprint</p>
+        </button>
+        <button type="button" class="scenario-card" data-scenario="team_coord" onclick="showScenario('team_coord')">
+          <span class="sc-icon">🤝</span>
+          <div class="sc-title">Research vs. Engineering</div>
+          <p class="sc-desc">Research prototypes are "unshippable" per the engineering team</p>
+        </button>
+        <button type="button" class="scenario-card" data-scenario="stakeholder_pressure" onclick="showScenario('stakeholder_pressure')">
+          <span class="sc-icon">📣</span>
+          <div class="sc-title">Unrealistic Expectations</div>
+          <p class="sc-desc">Exec wants a ChatGPT clone built in 8 weeks</p>
+        </button>
+      </div>
+
+      <div class="scenario-detail" id="scenarioDetailBox">
+        <em>👆 Click a scenario above to see TPM guidance</em>
+      </div>
+
+      <h3>Questions every TPM should ask at project kickoff</h3>
+      <div class="glossary-grid">
+        <div class="glossary-item">
+          <div class="glossary-term">🗄️ About the data</div>
+          <div class="glossary-def">"Does the labeled training data exist today?" · "Who owns data access and what are the privacy/legal constraints?" · "How will data drift be detected in production?"</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">🎯 About success</div>
+          <div class="glossary-def">"What does 'good enough' look like, and who decides?" · "What's the baseline we're beating?" · "Is this a launch blocker or a post-launch improvement target?"</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">⚠️ About risk</div>
+          <div class="glossary-def">"What's our rollback plan if the model degrades?" · "Which user groups could be harmed by a wrong prediction?" · "Is there a human-in-the-loop safety net?"</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">👥 About the team</div>
+          <div class="glossary-def">"Who is the final decision-maker on model quality?" · "How will research hand off to engineering?" · "Who monitors production performance post-launch?"</div>
+        </div>
+      </div>
+
+      <div class="key-points">
+        <h3>Key Takeaways</h3>
+        <ul>
+          <li>✅ Data delays are the #1 cause of ML project slippage — track data readiness as a milestone</li>
+          <li>✅ Challenge accuracy targets upfront — they're often aspirational, not researched</li>
+          <li>✅ Build "productionization time" explicitly into every AI project plan</li>
+          <li>✅ "Buy before build" — integrating an API is often faster and more reliable than training a custom model</li>
+          <li>✅ Define rollback criteria before deploying — not after something goes wrong</li>
+        </ul>
+      </div>
+      <button class="mark-done-btn" data-topic="scenarios" onclick="markDone('scenarios', this)">Mark as Done ✓</button>
+    </div>
+  </section>
+
+  <!-- ── Tab 7: AI Lifecycle ── -->
+  <section id="lifecycle" class="tab-panel" role="tabpanel" aria-labelledby="tab-lifecycle">
+    <div class="card">
+      <h2>🔄 AI Project Lifecycle &amp; MLOps</h2>
+      <p>
+        A production ML system is much more than a trained model — it's a pipeline of data, code, experiments,
+        deployment infrastructure, and monitoring. <strong>MLOps</strong> (Machine Learning Operations) is the
+        discipline of making that pipeline reliable, repeatable, and maintainable.
+      </p>
+
+      <div class="analogy-box">
+        <span class="analogy-icon">💡</span>
+        <div>
+          <strong>TPM analogy:</strong> Shipping a trained model to production is like launching a product —
+          but the product never stops changing. The model needs to be retrained as data evolves, re-evaluated
+          as requirements shift, and monitored like a live service. Think of MLOps as DevOps for models.
+        </div>
+      </div>
+
+      <h3>The 8 Phases of an AI Project — Click each phase to learn more</h3>
+      <div class="process-flow">
+        <button type="button" class="process-step lifecycle-step" id="lc-1" onclick="showLifecycleStep(1)">
+          <span class="ps-icon">🔭</span>
+          <span class="ps-label">1. Discover</span>
+        </button>
+        <span class="ps-arrow">→</span>
+        <button type="button" class="process-step lifecycle-step" id="lc-2" onclick="showLifecycleStep(2)">
+          <span class="ps-icon">📋</span>
+          <span class="ps-label">2. Define</span>
+        </button>
+        <span class="ps-arrow">→</span>
+        <button type="button" class="process-step lifecycle-step" id="lc-3" onclick="showLifecycleStep(3)">
+          <span class="ps-icon">🗄️</span>
+          <span class="ps-label">3. Data</span>
+        </button>
+        <span class="ps-arrow">→</span>
+        <button type="button" class="process-step lifecycle-step" id="lc-4" onclick="showLifecycleStep(4)">
+          <span class="ps-icon">🔬</span>
+          <span class="ps-label">4. Experiment</span>
+        </button>
+        <span class="ps-arrow">→</span>
+        <button type="button" class="process-step lifecycle-step" id="lc-5" onclick="showLifecycleStep(5)">
+          <span class="ps-icon">🏗️</span>
+          <span class="ps-label">5. Build</span>
+        </button>
+        <span class="ps-arrow">→</span>
+        <button type="button" class="process-step lifecycle-step" id="lc-6" onclick="showLifecycleStep(6)">
+          <span class="ps-icon">🧪</span>
+          <span class="ps-label">6. Evaluate</span>
+        </button>
+        <span class="ps-arrow">→</span>
+        <button type="button" class="process-step lifecycle-step" id="lc-7" onclick="showLifecycleStep(7)">
+          <span class="ps-icon">🚀</span>
+          <span class="ps-label">7. Deploy</span>
+        </button>
+        <span class="ps-arrow">→</span>
+        <button type="button" class="process-step lifecycle-step" id="lc-8" onclick="showLifecycleStep(8)">
+          <span class="ps-icon">📡</span>
+          <span class="ps-label">8. Monitor</span>
+        </button>
+      </div>
+      <div class="process-detail" id="lifecycleDetail">
+        <em>👆 Click a phase above to learn about it</em>
+      </div>
+
+      <h3>Key MLOps concepts you'll hear</h3>
+      <div class="glossary-grid">
+        <div class="glossary-item">
+          <div class="glossary-term">🔀 CI/CD for ML</div>
+          <div class="glossary-def">Continuous Integration/Deployment applied to ML: automatically retrain, evaluate, and deploy updated models when new data arrives or code changes.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">📈 Data Drift</div>
+          <div class="glossary-def">When real-world input data shifts away from the training distribution. Example: a fraud model trained pre-COVID may miss new fraud patterns that emerged during the pandemic.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">🏷️ Model Registry</div>
+          <div class="glossary-def">A versioned catalog of trained models — similar to a code repository, but for model artifacts, metadata, and evaluation results. Tools: MLflow, Vertex AI Model Registry.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">🪄 Feature Store</div>
+          <div class="glossary-def">A centralized repository for precomputed ML features, ensuring consistency between training and serving. Prevents "training-serving skew" — a common production bug.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">🐦 Shadow Mode / Canary</div>
+          <div class="glossary-def">Shadow mode: run a new model in parallel without affecting users (log predictions only). Canary: route a small % of real traffic to the new model before full rollout.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">🔁 Retraining Triggers</div>
+          <div class="glossary-def">Conditions that kick off a new training run: scheduled (weekly), data-volume threshold, or metric-based (accuracy drops below X%). Agree on triggers before launch.</div>
+        </div>
+      </div>
+
+      <h3>Agile for AI: Where traditional sprints need adaptation</h3>
+      <div class="comparison-grid">
+        <div class="compare-card ml">
+          <div class="compare-icon">📅</div>
+          <h4>Traditional Agile</h4>
+          <p style="text-align:left;font-size:.88rem">• Predictable 2-week sprints<br/>• Clear acceptance criteria<br/>• "Done" is a working feature<br/>• Velocity is measurable</p>
+        </div>
+        <div class="compare-card ai">
+          <div class="compare-icon">🧪</div>
+          <h4>AI/ML Adaptation Needed</h4>
+          <p style="text-align:left;font-size:.88rem">• Experiments may need 2–6 weeks<br/>• Success criteria are probabilistic<br/>• "Done" includes production monitoring<br/>• Value is delivered non-linearly</p>
+        </div>
+      </div>
+
+      <div class="key-points">
+        <h3>Key Takeaways</h3>
+        <ul>
+          <li>✅ ML projects are circular, not linear — expect to cycle back through phases</li>
+          <li>✅ Data work takes 60–80% of the timeline; plan accordingly</li>
+          <li>✅ MLOps = DevOps for ML — deployment, monitoring, and retraining are ongoing</li>
+          <li>✅ Shadow mode and canary releases reduce risk of model failures at launch</li>
+          <li>✅ Define retraining triggers before launch — not after the model degrades</li>
+        </ul>
+      </div>
+      <button class="mark-done-btn" data-topic="lifecycle" onclick="markDone('lifecycle', this)">Mark as Done ✓</button>
+    </div>
+  </section>
+
+  <!-- ── Tab 8: Stakeholder Communication ── -->
+  <section id="stakeholder" class="tab-panel" role="tabpanel" aria-labelledby="tab-stakeholder">
+    <div class="card">
+      <h2>🗣️ Stakeholder Communication &amp; Translation</h2>
+      <p>
+        A core TPM superpower is translating between technical and non-technical stakeholders.
+        In AI projects, this means explaining complex concepts in plain English, managing
+        expectations about what AI can and can't do, and framing technical tradeoffs as business decisions.
+      </p>
+
+      <div class="analogy-box">
+        <span class="analogy-icon">💡</span>
+        <div>
+          <strong>TPM analogy:</strong> You're the interpreter between two groups speaking different languages.
+          Engineers talk about precision, recall, and latency p99. Executives talk about revenue impact,
+          user trust, and risk. Your job is to translate — accurately — in both directions.
+        </div>
+      </div>
+
+      <h3>Jargon Translator: Technical → Plain English</h3>
+      <div class="glossary-grid">
+        <div class="glossary-item">
+          <div class="glossary-term">🎯 Model accuracy</div>
+          <div class="glossary-def"><strong>They say:</strong> "We achieved 89% accuracy." <strong>You say to execs:</strong> "The model gets the right answer about 9 times out of 10 on our test set." (But also: ask what the baseline is — 89% could be bad if the most common class is 90% of data.)</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">⚖️ Precision vs. Recall</div>
+          <div class="glossary-def"><strong>Precision:</strong> "When we flag something, how often are we right?" <strong>Recall:</strong> "Of all the real cases, how many did we catch?" There's a tradeoff — tightening one loosens the other. Which matters more is a business decision.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">💤 Model Latency</div>
+          <div class="glossary-def"><strong>They say:</strong> "P99 latency is 450ms." <strong>You say:</strong> "For 99% of requests, the AI responds in under half a second. The slowest 1% take longer — this affects our SLA commitments."</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">🌀 Overfitting</div>
+          <div class="glossary-def"><strong>They say:</strong> "The model is overfit." <strong>You say:</strong> "The model memorized the training examples instead of learning generalizable patterns. It scores great on tests but fails on real-world data."</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">🎲 Confidence Score</div>
+          <div class="glossary-def"><strong>They say:</strong> "We'll surface predictions above 0.85 confidence." <strong>You say:</strong> "We'll only show AI recommendations when the model is 85%+ sure — lower-confidence predictions go to manual review."</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">🔄 Retraining</div>
+          <div class="glossary-def"><strong>They say:</strong> "We need to retrain the model quarterly." <strong>You say:</strong> "We update the AI every 3 months with new data so it stays current and doesn't degrade as the world changes."</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">🌫️ Hallucination</div>
+          <div class="glossary-def"><strong>They say:</strong> "The LLM hallucinated." <strong>You say:</strong> "The AI confidently gave us wrong information it made up. For this use case, we need human review of all AI outputs before they're used."</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">📚 RAG</div>
+          <div class="glossary-def"><strong>They say:</strong> "We're using RAG for the knowledge base." <strong>You say:</strong> "We're connecting the AI to our internal documents so it answers based on our actual data, not just its general training."</div>
+        </div>
+      </div>
+
+      <h3>Managing AI Expectations: What to say when…</h3>
+      <div class="comparison-grid">
+        <div class="compare-card product" style="text-align:left">
+          <div class="compare-icon" style="text-align:center">🚫</div>
+          <h4 style="text-align:center">Don't say this</h4>
+          <ul style="list-style:none;padding:0;font-size:.88rem;color:var(--muted)">
+            <li style="padding:.25rem 0">❌ "The AI will handle everything automatically"</li>
+            <li style="padding:.25rem 0">❌ "It's like ChatGPT but for us"</li>
+            <li style="padding:.25rem 0">❌ "The model is 95% accurate so we're good"</li>
+            <li style="padding:.25rem 0">❌ "We just need to train it on our data"</li>
+            <li style="padding:.25rem 0">❌ "AI will be done in 3 weeks"</li>
+          </ul>
+        </div>
+        <div class="compare-card model" style="text-align:left">
+          <div class="compare-icon" style="text-align:center">✅</div>
+          <h4 style="text-align:center">Say this instead</h4>
+          <ul style="list-style:none;padding:0;font-size:.88rem;color:var(--muted)">
+            <li style="padding:.25rem 0">✅ "It will automate X, with human review for edge cases"</li>
+            <li style="padding:.25rem 0">✅ "It uses similar technology, scoped to this specific task"</li>
+            <li style="padding:.25rem 0">✅ "95% on the test set — let's see how it holds up on live data"</li>
+            <li style="padding:.25rem 0">✅ "Data collection, cleaning, and labeling adds 6–12 weeks"</li>
+            <li style="padding:.25rem 0">✅ "Experimentation phase will take 4–8 weeks — results will inform timeline"</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Metrics that matter: Technical vs. Business KPIs</h3>
+      <div class="comparison-grid">
+        <div class="compare-card dl" style="text-align:left">
+          <div class="compare-icon" style="text-align:center">🔬</div>
+          <h4 style="text-align:center">Technical Metrics</h4>
+          <ul style="list-style:none;padding:0;font-size:.88rem;color:var(--muted)">
+            <li style="padding:.2rem 0">• Accuracy, Precision, Recall, F1 score</li>
+            <li style="padding:.2rem 0">• AUC-ROC (ranking quality)</li>
+            <li style="padding:.2rem 0">• Latency (p50, p95, p99)</li>
+            <li style="padding:.2rem 0">• Training time, inference cost per request</li>
+            <li style="padding:.2rem 0">• Data drift metrics</li>
+          </ul>
+        </div>
+        <div class="compare-card ai" style="text-align:left">
+          <div class="compare-icon" style="text-align:center">📈</div>
+          <h4 style="text-align:center">Business KPIs</h4>
+          <ul style="list-style:none;padding:0;font-size:.88rem;color:var(--muted)">
+            <li style="padding:.2rem 0">• Time saved (hours/week automated)</li>
+            <li style="padding:.2rem 0">• Error rate reduction (vs. manual process)</li>
+            <li style="padding:.2rem 0">• Revenue impact or cost savings ($)</li>
+            <li style="padding:.2rem 0">• User satisfaction / NPS change</li>
+            <li style="padding:.2rem 0">• Decision quality improvement</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="key-points">
+        <h3>Key Takeaways</h3>
+        <ul>
+          <li>✅ Always translate technical metrics into business impact for executive audiences</li>
+          <li>✅ Precision vs. recall tradeoff is a business decision — present it as one</li>
+          <li>✅ Set expectations early: AI projects require data work that takes weeks, not days</li>
+          <li>✅ "95% accuracy" is meaningless without a baseline to compare against</li>
+          <li>✅ Hallucination risk means high-stakes AI outputs need human review workflows</li>
+        </ul>
+      </div>
+      <button class="mark-done-btn" data-topic="stakeholder" onclick="markDone('stakeholder', this)">Mark as Done ✓</button>
+    </div>
+  </section>
+
+  <!-- ── Tab 9: Prompt Engineering ── -->
+  <section id="prompts" class="tab-panel" role="tabpanel" aria-labelledby="tab-prompts">
+    <div class="card">
+      <h2>✍️ Prompt Engineering</h2>
+      <p>
+        <strong>Prompt engineering</strong> is the practice of crafting inputs to LLMs to get the most
+        accurate, useful, and reliably formatted outputs. It's part art, part science — and an increasingly
+        valuable skill for TPMs who use AI tools or manage teams that build them.
+      </p>
+
+      <div class="analogy-box">
+        <span class="analogy-icon">💡</span>
+        <div>
+          <strong>TPM analogy:</strong> Writing a good prompt is like writing a good requirements document.
+          Vague requirements produce vague output. Specific requirements — with context, constraints, and
+          examples — produce reliable, usable output. The more precise you are about what you want, the
+          better the AI can deliver it.
+        </div>
+      </div>
+
+      <div class="info-box">
+        <span class="info-icon">🔑</span>
+        <div>
+          <strong>Why TPMs need this:</strong> Whether you're using AI tools personally, reviewing AI-powered
+          features, or working with teams integrating LLM APIs, understanding how prompts work helps you
+          set realistic expectations, debug outputs, and make better product decisions.
+        </div>
+      </div>
+
+      <h3>5 Core Techniques — Click to see examples</h3>
+      <div class="prompt-tech-grid">
+        <button type="button" class="prompt-tech-card" data-technique="zero_shot" onclick="showPromptTechnique('zero_shot')">
+          <span class="ptc-icon">🎯</span>
+          <div class="ptc-title">Zero-Shot</div>
+          <p class="ptc-desc">Ask directly — no examples</p>
+        </button>
+        <button type="button" class="prompt-tech-card" data-technique="few_shot" onclick="showPromptTechnique('few_shot')">
+          <span class="ptc-icon">📋</span>
+          <div class="ptc-title">Few-Shot</div>
+          <p class="ptc-desc">Provide 2–5 worked examples</p>
+        </button>
+        <button type="button" class="prompt-tech-card" data-technique="chain_of_thought" onclick="showPromptTechnique('chain_of_thought')">
+          <span class="ptc-icon">🔗</span>
+          <div class="ptc-title">Chain-of-Thought</div>
+          <p class="ptc-desc">Ask the model to reason step by step</p>
+        </button>
+        <button type="button" class="prompt-tech-card" data-technique="role_prompting" onclick="showPromptTechnique('role_prompting')">
+          <span class="ptc-icon">🎭</span>
+          <div class="ptc-title">Role Prompting</div>
+          <p class="ptc-desc">Assign an expert persona to the model</p>
+        </button>
+        <button type="button" class="prompt-tech-card" data-technique="structured_output" onclick="showPromptTechnique('structured_output')">
+          <span class="ptc-icon">📊</span>
+          <div class="ptc-title">Structured Output</div>
+          <p class="ptc-desc">Request a specific format (JSON, table)</p>
+        </button>
+      </div>
+      <div class="prompt-detail" id="promptDetailBox">
+        <em>👆 Click a technique above to see an explanation and example prompt</em>
+      </div>
+
+      <h3>Prompt engineering best practices</h3>
+      <div class="three-col-grid">
+        <div class="compare-card ai">
+          <div class="compare-icon">📌</div>
+          <h4>Be specific</h4>
+          <p>Include context, constraints, audience, and desired format. Vague prompts produce vague output.</p>
+        </div>
+        <div class="compare-card ml">
+          <div class="compare-icon">🔁</div>
+          <h4>Iterate</h4>
+          <p>Treat prompting like debugging. Change one variable at a time and observe the effect.</p>
+        </div>
+        <div class="compare-card dl">
+          <div class="compare-icon">🧪</div>
+          <h4>Evaluate systematically</h4>
+          <p>Don't judge a prompt on one output. Test it on diverse inputs to find failure modes.</p>
+        </div>
+      </div>
+
+      <h3>TPM-specific use cases for prompt engineering</h3>
+      <div class="glossary-grid">
+        <div class="glossary-item">
+          <div class="glossary-term">📝 Status reports</div>
+          <div class="glossary-def">Paste meeting notes into an LLM with a structured output prompt to auto-generate weekly status updates in your team's format.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">⚠️ Risk identification</div>
+          <div class="glossary-def">Share a project plan and ask the model to "identify risks, dependencies, and missing requirements as a senior PM would." Use as a pre-mortem tool.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">🗣️ Stakeholder prep</div>
+          <div class="glossary-def">Role-prompt the model as a skeptical executive and have it challenge your roadmap — great prep for tough review meetings.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">📊 Data summarization</div>
+          <div class="glossary-def">Summarize long technical documents, PRDs, or research papers into 3-bullet executive summaries. Chain-of-thought helps for complex synthesis.</div>
+        </div>
+      </div>
+
+      <div class="key-points">
+        <h3>Key Takeaways</h3>
+        <ul>
+          <li>✅ Prompt quality directly determines output quality — invest in crafting good prompts</li>
+          <li>✅ Few-shot examples are the fastest way to improve output format and consistency</li>
+          <li>✅ "Think step by step" (chain-of-thought) significantly improves reasoning tasks</li>
+          <li>✅ Requesting structured output (JSON, tables) makes LLM output easier to use programmatically</li>
+          <li>✅ Treat prompt engineering iteratively — one change at a time, test on diverse inputs</li>
+        </ul>
+      </div>
+      <button class="mark-done-btn" data-topic="prompts" onclick="markDone('prompts', this)">Mark as Done ✓</button>
+    </div>
+  </section>
+
+  <!-- ── Tab 10: Risk & Ethics ── -->
+  <section id="ethics" class="tab-panel" role="tabpanel" aria-labelledby="tab-ethics">
+    <div class="card">
+      <h2>⚖️ Risk, Ethics &amp; Responsible AI</h2>
+      <p>
+        AI systems can cause real harm — through biased decisions, privacy violations, safety failures,
+        or misuse. As a TPM, you're often the person responsible for asking "should we?" when everyone
+        else is focused on "can we?". Responsible AI isn't just ethics — it's also risk management.
+      </p>
+
+      <div class="analogy-box">
+        <span class="analogy-icon">💡</span>
+        <div>
+          <strong>TPM analogy:</strong> Imagine shipping a product without security testing because it
+          "works in the demo." Responsible AI is the security testing equivalent for AI systems —
+          it's not optional for production, it's a standard part of the launch checklist.
+        </div>
+      </div>
+
+      <h3>Types of AI risk</h3>
+      <div class="three-col-grid">
+        <div class="compare-card ai">
+          <div class="compare-icon">⚖️</div>
+          <h4>Bias &amp; Fairness</h4>
+          <p>A model trained on historical data inherits historical biases. Can produce discriminatory outcomes in hiring, lending, criminal justice, and healthcare.</p>
+        </div>
+        <div class="compare-card product">
+          <div class="compare-icon">🔒</div>
+          <h4>Privacy &amp; Security</h4>
+          <p>Models can memorize training data and inadvertently leak PII. Adversarial attacks (prompt injection, data poisoning) can subvert model behavior.</p>
+        </div>
+        <div class="compare-card model">
+          <div class="compare-icon">🌫️</div>
+          <h4>Reliability &amp; Safety</h4>
+          <p>Hallucinations, distributional shift, and edge case failures. In high-stakes domains (medical, legal, safety-critical), wrong outputs can cause serious harm.</p>
+        </div>
+      </div>
+
+      <h3>Bias: What TPMs need to know</h3>
+      <div class="glossary-grid">
+        <div class="glossary-item">
+          <div class="glossary-term">📊 Training data bias</div>
+          <div class="glossary-def">If historical data reflects past discrimination (e.g., hiring data with gender skew), the model will learn and replicate those patterns. Garbage in = biased model out.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">🔍 Representation bias</div>
+          <div class="glossary-def">When certain groups are underrepresented in training data, the model performs worse on them. A face recognition system trained mostly on light-skinned faces performs poorly on dark-skinned faces.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">📏 Measurement bias</div>
+          <div class="glossary-def">Using a proxy metric that's systematically unfair. Using zip code as a credit risk proxy can perpetuate redlining — zip code correlates with race in the US.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">🧪 Evaluation bias</div>
+          <div class="glossary-def">Only testing performance on aggregate metrics hides disparate impact. Always disaggregate evaluation by demographic slices relevant to your use case.</div>
+        </div>
+      </div>
+
+      <h3>Regulatory landscape</h3>
+      <div class="glossary-grid">
+        <div class="glossary-item">
+          <div class="glossary-term">🇪🇺 EU AI Act (2024)</div>
+          <div class="glossary-def">World's first comprehensive AI law. Risk-based tiers: <strong>Unacceptable risk</strong> (banned), <strong>High risk</strong> (strict requirements — hiring, credit, healthcare), <strong>Limited/Minimal risk</strong>. High-risk AI requires conformity assessments, transparency, and human oversight.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">🇺🇸 US Executive Order on AI (2023)</div>
+          <div class="glossary-def">Requires safety testing for powerful AI models, standards for watermarking AI content, and guidance for agencies using AI in government services. Sector-specific rules from FTC, EEOC, and others.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">🔐 GDPR &amp; Data Privacy</div>
+          <div class="glossary-def">EU regulation requiring lawful basis for data use, right to explanation for automated decisions, and data minimization. Applies to ML training data and AI-driven decisions about EU residents.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">🏥 Sector regulations</div>
+          <div class="glossary-def">HIPAA (healthcare), FCRA (credit), EEOC (employment) apply existing rules to AI. If your AI touches one of these domains, involve legal and compliance early — not at launch.</div>
+        </div>
+      </div>
+
+      <h3>Responsible AI Launch Checklist</h3>
+      <p style="font-size:.88rem;color:var(--muted)">Click each item to mark it as reviewed for your project:</p>
+      <ul class="checklist" id="raiChecklist">
+        <li class="checklist-item" role="checkbox" aria-checked="false" tabindex="0" onclick="toggleChecklist(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleChecklist(this)}">
+          <div class="checklist-check" aria-hidden="true"></div>
+          <div><div class="checklist-text">📊 Bias audit completed</div><div class="checklist-subtext">Evaluation metrics disaggregated by relevant demographic slices; no significant disparate impact identified</div></div>
+        </li>
+        <li class="checklist-item" role="checkbox" aria-checked="false" tabindex="0" onclick="toggleChecklist(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleChecklist(this)}">
+          <div class="checklist-check" aria-hidden="true"></div>
+          <div><div class="checklist-text">🔍 Explainability requirements addressed</div><div class="checklist-subtext">Team can explain model decisions to affected users and regulators; documentation exists</div></div>
+        </li>
+        <li class="checklist-item" role="checkbox" aria-checked="false" tabindex="0" onclick="toggleChecklist(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleChecklist(this)}">
+          <div class="checklist-check" aria-hidden="true"></div>
+          <div><div class="checklist-text">👤 Human-in-the-loop defined</div><div class="checklist-subtext">High-stakes or low-confidence predictions have a human review workflow, not fully automated</div></div>
+        </li>
+        <li class="checklist-item" role="checkbox" aria-checked="false" tabindex="0" onclick="toggleChecklist(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleChecklist(this)}">
+          <div class="checklist-check" aria-hidden="true"></div>
+          <div><div class="checklist-text">🔒 Data privacy &amp; security reviewed</div><div class="checklist-subtext">PII handling, data retention, consent, and access controls validated with legal/privacy team</div></div>
+        </li>
+        <li class="checklist-item" role="checkbox" aria-checked="false" tabindex="0" onclick="toggleChecklist(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleChecklist(this)}">
+          <div class="checklist-check" aria-hidden="true"></div>
+          <div><div class="checklist-text">⚖️ Legal &amp; compliance sign-off obtained</div><div class="checklist-subtext">Relevant regulations (GDPR, sector rules, EU AI Act tier) reviewed; legal clearance documented</div></div>
+        </li>
+        <li class="checklist-item" role="checkbox" aria-checked="false" tabindex="0" onclick="toggleChecklist(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleChecklist(this)}">
+          <div class="checklist-check" aria-hidden="true"></div>
+          <div><div class="checklist-text">🚨 Failure mode analysis done</div><div class="checklist-subtext">Edge cases, adversarial inputs, and failure scenarios documented; severity and likelihood assessed</div></div>
+        </li>
+        <li class="checklist-item" role="checkbox" aria-checked="false" tabindex="0" onclick="toggleChecklist(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleChecklist(this)}">
+          <div class="checklist-check" aria-hidden="true"></div>
+          <div><div class="checklist-text">📡 Production monitoring in place</div><div class="checklist-subtext">Alerts configured for accuracy degradation, data drift, and anomalous output patterns</div></div>
+        </li>
+        <li class="checklist-item" role="checkbox" aria-checked="false" tabindex="0" onclick="toggleChecklist(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleChecklist(this)}">
+          <div class="checklist-check" aria-hidden="true"></div>
+          <div><div class="checklist-text">🔄 Rollback plan defined</div><div class="checklist-subtext">Criteria and process for reverting to previous model version or disabling AI feature documented and tested</div></div>
+        </li>
+      </ul>
+
+      <div class="key-points">
+        <h3>Key Takeaways</h3>
+        <ul>
+          <li>✅ AI bias comes from data — always evaluate model performance across demographic subgroups</li>
+          <li>✅ High-stakes AI decisions (hiring, lending, healthcare) face specific legal requirements</li>
+          <li>✅ Explainability is not optional — affected users and regulators may have a right to explanations</li>
+          <li>✅ The EU AI Act (2024) classifies AI by risk — know which tier your product falls in</li>
+          <li>✅ Responsible AI is a launch requirement, not an afterthought — build it into the project plan</li>
+        </ul>
+      </div>
+      <button class="mark-done-btn" data-topic="ethics" onclick="markDone('ethics', this)">Mark as Done ✓</button>
+    </div>
+  </section>
 
   </main>
 
